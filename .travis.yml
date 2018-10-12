@@ -6,7 +6,7 @@ dist: trusty
 
 branches:
   only:
-  - master
+  - cit
 
 before_script:
 - export CHROME_BIN=/usr/bin/google-chrome
