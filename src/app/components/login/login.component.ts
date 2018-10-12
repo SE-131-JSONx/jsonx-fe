@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../services/auth.service';
+import { BackendService } from '../../services/backend.service';
 import { LoadingService } from '../../services/loading.service';
 import {FormControl, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   username = new FormControl('', [Validators.required]);
   password = new FormControl('', [Validators.required]);
 
-  constructor(public authService: AuthService,
+  constructor(public authService: BackendService,
               private router: Router,
               public loadingService: LoadingService) {
     if (authService.isAuthenticated) {

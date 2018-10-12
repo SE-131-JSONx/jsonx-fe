@@ -42,11 +42,8 @@ export class SignupComponent implements OnInit {
   }
 
   signUp() {
-    // this method with call to our back end apis and attempt to register the user
-    // backend documentation for Create User:
-    // https://docs.google.com/document/d/186uPY6rmbBvEOeE7cjtL3g_EPoIXm7kGo3NXN_1We1o/edit#heading=h.75cohzfnk3vz
-    // look at login component for specifics on how to accomplish this.
-    // remove these comments when done
+    // call to BackendService.signUp() - services/backend.service.ts
+    // see Login Component for example on proper structure - components/login.component.ts
   }
 
 }

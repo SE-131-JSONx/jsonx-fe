@@ -2,7 +2,7 @@ import { TestBed, inject } from '@angular/core/testing';
 
 import { LoadingService } from './loading.service';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
-import {AuthService} from './auth.service';
+import {BackendService} from './backend.service';
 import {RouterTestingModule} from '@angular/router/testing';
 import {MatSnackBarModule} from '@angular/material';
 
@@ -14,7 +14,7 @@ describe('LoadingService', () => {
     });
   });
 
-  it('should be created', inject([AuthService, HttpClientTestingModule, RouterTestingModule], (service: AuthService) => {
+  it('should be created', inject([BackendService, HttpClientTestingModule, RouterTestingModule], (service: BackendService) => {
     expect(service).toBeTruthy();
   }));
 });

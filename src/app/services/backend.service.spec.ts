@@ -1,20 +1,20 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { AuthService } from './auth.service';
+import { BackendService } from './backend.service';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {HttpClientModule} from '@angular/common/http';
 import {RouterTestingModule} from '@angular/router/testing';
 import {MatSnackBarModule} from '@angular/material';
 
-describe('AuthService', () => {
+describe('BackendService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule, RouterTestingModule, MatSnackBarModule],
-      providers: [AuthService]
+      providers: [BackendService]
     });
   });
 
-  it('should be created', inject([AuthService, HttpClientTestingModule, RouterTestingModule], (service: AuthService) => {
+  it('should be created', inject([BackendService, HttpClientTestingModule, RouterTestingModule], (service: BackendService) => {
     expect(service).toBeTruthy();
   }));
 });
