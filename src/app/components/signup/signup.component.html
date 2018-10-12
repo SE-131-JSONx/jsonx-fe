@@ -1,3 +1,51 @@
-<p>
-  signup works!
-</p>
+<div class="center" fxLayout="row" fxLayoutAlign="center center">
+
+  <mat-card class="p-0 py-sm-25 w-33 w-sm-100 h-sm-100" fxLayout="column" fxLayoutAlign="center center">
+    <mat-toolbar color="primary" class="mat-elevation-z1 display" fxHide.lt-md="true" fxLayout="row" fxLayoutAlign="center center">
+      Signup
+    </mat-toolbar>
+    <mat-card-content class="py-4 px-5 w-100">
+      <div class="row pb-1">
+        <mat-form-field fxFill="true">
+          <input matInput placeholder="First name" [formControl]="name">
+          <mat-error *ngIf="name.invalid">{{getNameErrorMessage()}}</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="row pb-1">
+        <mat-form-field fxFill="true">
+          <input matInput placeholder="Last name" [formControl]="surname">
+          <mat-error *ngIf="surname.invalid">{{getSurnameErrorMessage()}}</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="row pb-1">
+        <mat-form-field fxFill="true">
+          <input matInput placeholder="Email" [formControl]="email">
+          <mat-error *ngIf="email.invalid">{{getEmailErrorMessage()}}</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="row pb-1">
+        <mat-form-field fxFill="true">
+          <input matInput placeholder="Username" [formControl]="username">
+          <mat-error *ngIf="username.invalid">{{getUserErrorMessage()}}</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field fxFill="true">
+          <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'" [formControl]="password">
+          <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+          <mat-error *ngIf="password.invalid">{{getPasswordErrorMessage()}}</mat-error>
+        </mat-form-field>
+      </div>
+    </mat-card-content>
+    <mat-card-actions class="text-center">
+      <button mat-raised-button color="primary"
+              [disabled]="username.invalid || password.invalid || name.invalid || surname.invalid || email.invalid"
+              (click)="signUp()">Login</button>
+    </mat-card-actions>
+    <button mat-button [routerLink]="['/login']" class="m-auto">Already have an account? Log in!</button>
+  </mat-card>
+
+</div>
+
+
+

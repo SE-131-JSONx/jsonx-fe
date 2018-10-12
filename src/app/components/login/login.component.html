@@ -4,14 +4,14 @@
     <mat-toolbar color="primary" class="mat-elevation-z1 display" fxHide.lt-md="true" fxLayout="row" fxLayoutAlign="center center">
       Login
     </mat-toolbar>
-    <mat-card-content class="py-4 px-5">
+    <mat-card-content class="py-4 px-5 w-100">
       <div class="row pb-1">
         <mat-form-field fxFill="true">
           <input matInput placeholder="Username" [formControl]="username">
           <mat-error *ngIf="username.invalid">{{getUserErrorMessage()}}</mat-error>
         </mat-form-field>
       </div>
-      <div class="row">
+      <div class="row pb-1">
         <mat-form-field fxFill="true">
           <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'" [formControl]="password">
           <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
