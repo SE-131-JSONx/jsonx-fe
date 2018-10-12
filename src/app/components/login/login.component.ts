@@ -1,0 +1,46 @@
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../services/auth.service';
+import { LoadingService } from '../../services/loading.service';
+import {FormControl, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
+
+@Component({
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss']
+})
+export class LoginComponent implements OnInit {
+  hide = true;
+  username = new FormControl('', [Validators.required]);
+  password = new FormControl('', [Validators.required]);
+
+  constructor(public authService: AuthService,
+              private router: Router,
+              public loadingService: LoadingService) {
+    if (authService.isAuthenticated) {
+      router.navigateByUrl('/dashboard');
+    }
+  }
+
+  getUserErrorMessage() {
+    return this.username.hasError('required') ? 'Username is required' : '';
+  }
+  getPasswordErrorMessage() {
+    return this.password.hasError('required') ? 'Password is required' : '';
+  }
+  login() {
+    this.loadingService.start('Logging in...');
+    this.authService.login(this.username.value, this.password.value, (error, r) => {
+      if (error) {
+        console.log(error);
+        this.authService.openSnackBar(error.error.message, 3000);
+      } else {
+        this.router.navigateByUrl('/dashboard');
+      }
+      this.loadingService.stop();
+    });
+  }
+
+  ngOnInit() {
+  }
+}
