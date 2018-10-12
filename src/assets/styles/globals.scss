@@ -1,5 +1,27 @@
 /* Add styles that can be utilized across components in a global manner */
+@import 'variables';
 
 .w-33 {
   width: 33% !important;
+}
+
+.w-sm-100 {
+  @media screen and (max-width: $screen-sm) {
+    width: 100% !important;
+  }
+}
+
+.h-sm-100 {
+  @media screen and (max-width: $screen-sm) {
+    height: 100%;
+    height: -moz-available;          /* WebKit-based browsers will ignore this. */
+    height: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
+    height: stretch;
+  }
+}
+
+.py-sm-25 {
+  @media screen and (max-width: $screen-sm) {
+    padding-top: 25% !important;
+  }
 }
