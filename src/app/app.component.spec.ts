@@ -46,6 +46,7 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import {DashboardComponent} from './components/dashboard/dashboard.component';
 import {LoginComponent} from './components/login/login.component';
 import {SignupComponent} from './components/signup/signup.component';
+import {MyprofileComponent} from './components/myprofile/myprofile.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -54,7 +55,8 @@ describe('AppComponent', () => {
         AppComponent,
         DashboardComponent,
         LoginComponent,
-        SignupComponent
+        SignupComponent,
+        MyprofileComponent,
       ],
       imports: [
         BrowserModule,

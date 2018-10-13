@@ -47,6 +47,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {APP_BASE_HREF} from '@angular/common';
+import {MyprofileComponent} from '../myprofile/myprofile.component';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -58,7 +59,8 @@ describe('LoginComponent', () => {
         AppComponent,
         DashboardComponent,
         LoginComponent,
-        SignupComponent
+        SignupComponent,
+        MyprofileComponent,
       ],
       imports: [
         BrowserModule,
