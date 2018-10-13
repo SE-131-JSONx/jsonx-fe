@@ -1,5 +1,5 @@
 
-<div fullscreen>
+<div>
 
   <mat-toolbar class="fixed-bar" color="primary">
     <mat-toolbar-row>
@@ -32,8 +32,8 @@
     </mat-toolbar-row>
   </mat-toolbar>
   <mat-sidenav-container  class="bg-transparent">
-    <mat-sidenav #sidenav>
-      <mat-nav-list class="d-grid">
+    <mat-sidenav #sidenav class="h-100">
+      <mat-nav-list>
         <button mat-button class="w-100" [routerLink]="['/dashboard']" *ngIf="authService.isAuthenticated" (click)="sidenav.toggle()">
           <span>Dashboard</span>
         </button>
