@@ -34,7 +34,19 @@
   <mat-sidenav-container  class="bg-transparent">
     <mat-sidenav #sidenav>
       <mat-nav-list class="d-grid">
-        <button *ngFor="let route of routes;" mat-button [routerLink]=route[0] (click)="sidenav.toggle()">{{route[1]}}</button>
+        <button mat-button class="w-100" [routerLink]="['/dashboard']" *ngIf="authService.isAuthenticated" (click)="sidenav.toggle()">
+          <span>Dashboard</span>
+        </button>
+        <button mat-button class="w-100" [routerLink]="['/myprofile']" *ngIf="authService.isAuthenticated" (click)="sidenav.toggle()">
+          <span>My Profile</span>
+        </button>
+        <button mat-button class="w-100" [routerLink]="['/login']" *ngIf="!authService.isAuthenticated" (click)="sidenav.toggle()">
+          <span>Login</span>
+        </button>
+        <button mat-button class="w-100" [routerLink]="['/signup']" *ngIf="!authService.isAuthenticated" (click)="sidenav.toggle()">
+          <span>Signup</span>
+        </button>
+        <button mat-button class="w-100" *ngIf="authService.isAuthenticated" (click)="authService.logout()" (click)="sidenav.toggle()">Logout</button>
       </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>
