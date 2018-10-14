@@ -1,5 +1,8 @@
+import { BackendService } from './../../services/backend.service';
 import { Component, OnInit } from '@angular/core';
+import { LoadingService } from '../../services/loading.service';
 import {FormControl, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -14,8 +17,14 @@ export class SignupComponent implements OnInit {
   username = new FormControl('', [Validators.required]);
   password = new FormControl('', [Validators.required]);
 
-  constructor() { }
-
+  constructor(
+    public authService: BackendService,
+    private router: Router,
+    public loadingService: LoadingService) {
+      if (authService.isAuthenticated) {
+      router.navigateByUrl('/dashboard');
+    }
+  }
   ngOnInit() {
   }
 
@@ -42,8 +51,17 @@ export class SignupComponent implements OnInit {
   }
 
   signUp() {
-    // call to BackendService.signUp() - services/backend.service.ts
-    // see Login Component for example on proper structure - components/login.component.ts
+    this.loadingService.start('Signing up.....')
+    this.authService.signUp(this.name.value, this.surname.value, this.email.value, this.username.value, this.password.value,
+      (error, r) => {
+        if (error) {
+          console.log(error);
+          this.authService.openSnackBar(error.error.message, 3000);
+        } else {
+          this.router.navigateByUrl('/dashboard');
+        }
+        this.loadingService.stop();
+     });
   }
 
 }
