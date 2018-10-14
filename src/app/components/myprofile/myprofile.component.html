@@ -12,8 +12,8 @@
               </i>
           </div>
           <div class="col-12 offset-sm-1 col-sm-2 py-2 py-sm-0" fxLayout="column" fxLayoutAlign="center center">
-            <h4 class="mat-card-header m-0">First Last</h4>
-            <p class="text-muted m-0">email@address.com</p>
+            <h4 class="mat-card-header m-0 no-wrap">{{ profile.name }} {{ profile.surname }}</h4>
+            <p class="text-muted m-0">{{ profile.email }}</p>
           </div>
           <div class="col-12 col-sm-2 py-2 py-sm-0" fxLayout="column" fxLayoutAlign="center center">
             <h4 class="mat-card-header m-0">12</h4>
@@ -24,7 +24,7 @@
             <p class="text-muted m-0">Teams</p>
           </div>
           <div class="col-12 col-sm-2 py-2 py-sm-0" fxLayout="column" fxLayoutAlign="center center">
-            <h4 class="mat-card-header m-0">Jan 1 2018</h4>
+            <h4 class="mat-card-header m-0">{{ profile.created | date}}</h4>
             <p class="text-muted m-0">Joined</p>
           </div>
         </div>
@@ -37,12 +37,12 @@
         <div class="row pb-1">
           <div class="col-12 col-sm-6">
             <mat-form-field fxFill="true">
-              <input matInput placeholder="Dynamic First Name">
+              <input matInput placeholder="{{ profile.name }}">
             </mat-form-field>
           </div>
           <div class="col-12 col-sm-6">
             <mat-form-field fxFill="true">
-              <input matInput placeholder="Dynamic Last Name">
+              <input matInput placeholder="{{ profile.surname }}">
             </mat-form-field>
           </div>
         </div>
@@ -50,12 +50,7 @@
         <div class="row pb-1">
           <div class="col-12 col-sm-6">
             <mat-form-field fxFill="true">
-              <input matInput placeholder="Dynamic Email">
-            </mat-form-field>
-          </div>
-          <div class="col-12 col-sm-6">
-            <mat-form-field fxFill="true">
-              <input matInput placeholder="Dynamic Username">
+              <input matInput placeholder="{{ profile.email }}">
             </mat-form-field>
           </div>
         </div>

@@ -59,12 +59,11 @@ export class BackendService {
   /**
    * User
    * */
-  getUserDetails(id: number, next) {
+  getUserDetails(id: any, next) {
     const headers = globals.AUTH_HEADERS;
 
     return this.http.get(globals.BASE + globals.GET_USER_DETAILS + id, headers).subscribe(
       (r: any) => {
-        console.log(r);
         next(null, r);
       },
       (error: any) => {

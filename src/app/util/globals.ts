@@ -11,6 +11,9 @@ export const globals = {
 
   // STORAGE
   STORAGE_KEY: 'Authorization',
+  get JWT() {
+    return localStorage.getItem(this.STORAGE_KEY);
+  },
 
   // ENDPOINTS
   LOGIN: '/login',
