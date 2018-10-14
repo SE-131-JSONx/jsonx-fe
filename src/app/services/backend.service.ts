@@ -9,7 +9,6 @@ import { MatSnackBar } from '@angular/material';
 })
 export class BackendService {
 
-  private STORAGE_KEY = 'Authorization';
 
   constructor(private http: HttpClient,
               private router: Router,
@@ -20,7 +19,7 @@ export class BackendService {
    * */
 
   get isAuthenticated() {
-    return !!localStorage.getItem(this.STORAGE_KEY);
+    return !!localStorage.getItem(globals.STORAGE_KEY);
   }
 
   login(username: string, password: string, next) {
@@ -33,7 +32,7 @@ export class BackendService {
 
     return this.http.post(globals.BASE + globals.LOGIN, body, headers).subscribe(
       (r: any) => {
-        localStorage.setItem(this.STORAGE_KEY, r.token);
+        localStorage.setItem(globals.STORAGE_KEY, r.token);
         console.log(r);
         next(null, r);
       },
@@ -44,11 +43,22 @@ export class BackendService {
   }
 
   logout() {
-    localStorage.removeItem(this.STORAGE_KEY);
+    localStorage.removeItem(globals.STORAGE_KEY);
     // noinspection JSIgnoredPromiseFromCall
     this.router.navigate(['/login']);
   }
 
+  signUp() {
+    // this method with call to our back end apis and attempt to register the user
+    // backend documentation for Create User:
+    // https://docs.google.com/document/d/186uPY6rmbBvEOeE7cjtL3g_EPoIXm7kGo3NXN_1We1o/edit#heading=h.75cohzfnk3vz
+    // see login() above for an example on how to properly format and perform an HTTP call in angular
+    // remove these comments when done
+  }
+
+  /**
+   * User
+   * */
   getUserDetails(id: number, next) {
     const headers = globals.AUTH_HEADERS;
 
@@ -61,14 +71,6 @@ export class BackendService {
         this.openSnackBar(error.error.message, 2000);
         next(error, null);
       });
-  }
-
-  signUp() {
-    // this method with call to our back end apis and attempt to register the user
-    // backend documentation for Create User:
-    // https://docs.google.com/document/d/186uPY6rmbBvEOeE7cjtL3g_EPoIXm7kGo3NXN_1We1o/edit#heading=h.75cohzfnk3vz
-    // see login() above for an example on how to properly format and perform an HTTP call in angular
-    // remove these comments when done
   }
 
   /**
