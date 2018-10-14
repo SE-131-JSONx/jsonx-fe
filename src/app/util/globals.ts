@@ -12,11 +12,19 @@ export const globals = {
 
   // ENDPOINTS
   LOGIN: '/login',
-  GET_USER_DETAILS: '/user/{id}',
+  GET_USER_DETAILS: '/user/',
 
   get HEADERS() {
     return {
       headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Cache-Control': 'no-cache', 'Access-Control-Allow-Origin': '*'})
+    };
+  },
+  get AUTH_HEADERS() {
+    return {
+      headers: new HttpHeaders({'Content-Type': 'application/json',
+        'Cache-Control': 'no-cache',
+        'Authorization': localStorage.getItem('Authorization'),
+        'Access-Control-Allow-Origin': '*'})
     };
   },
 };

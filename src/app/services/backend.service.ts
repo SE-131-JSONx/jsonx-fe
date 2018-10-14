@@ -3,8 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { globals } from '../util/globals';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
-import {global} from '@angular/core/src/util';
-import DateTimeFormat = Intl.DateTimeFormat;
 
 @Injectable({
   providedIn: 'root'
@@ -52,7 +50,7 @@ export class BackendService {
   }
 
   getUserDetails(id: number, next) {
-    const headers = globals.HEADERS;
+    const headers = globals.AUTH_HEADERS;
 
     return this.http.get(globals.BASE + globals.GET_USER_DETAILS + id, headers).subscribe(
       (r: any) => {
