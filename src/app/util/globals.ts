@@ -1,5 +1,5 @@
 import { environment } from '../../environments/environment';
-import {HttpHeaders} from '@angular/common/http';
+import { HttpHeaders } from '@angular/common/http';
 
 export const globals = {
   // API
@@ -9,13 +9,24 @@ export const globals = {
     return this.API_BASE + this.API_VERSION;
   },
 
+  // STORAGE
+  STORAGE_KEY: 'Authorization',
 
   // ENDPOINTS
   LOGIN: '/login',
+  GET_USER_DETAILS: '/user/',
 
   get HEADERS() {
     return {
       headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Cache-Control': 'no-cache', 'Access-Control-Allow-Origin': '*'})
+    };
+  },
+  get AUTH_HEADERS() {
+    return {
+      headers: new HttpHeaders({'Content-Type': 'application/json',
+        'Cache-Control': 'no-cache',
+        'Authorization': localStorage.getItem(this.STORAGE_KEY),
+        'Access-Control-Allow-Origin': '*'})
     };
   },
 };
