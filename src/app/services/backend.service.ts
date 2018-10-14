@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { globals } from '../util/globals';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
+import {global} from '@angular/core/src/util';
+import DateTimeFormat = Intl.DateTimeFormat;
 
 @Injectable({
   providedIn: 'root'
@@ -47,6 +49,20 @@ export class BackendService {
     localStorage.removeItem(this.STORAGE_KEY);
     // noinspection JSIgnoredPromiseFromCall
     this.router.navigate(['/login']);
+  }
+
+  getUserDetails(id: number, next) {
+    const headers = globals.HEADERS;
+
+    return this.http.get(globals.BASE + globals.GET_USER_DETAILS + id, headers).subscribe(
+      (r: any) => {
+        console.log(r);
+        next(null, r);
+      },
+      (error: any) => {
+        this.openSnackBar(error.error.message, 2000);
+        next(error, null);
+      });
   }
 
   signUp() {
