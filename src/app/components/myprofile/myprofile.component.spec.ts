@@ -1,9 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SignupComponent } from './signup.component';
-import {AppComponent} from '../../app.component';
-import {DashboardComponent} from '../dashboard/dashboard.component';
-import {LoginComponent} from '../login/login.component';
+import { MyprofileComponent } from './myprofile.component';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AppRoutingModule} from '../../app-routing.module';
@@ -46,12 +43,15 @@ import {
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {FlexLayoutModule} from '@angular/flex-layout';
+import {AppComponent} from '../../app.component';
+import {DashboardComponent} from '../dashboard/dashboard.component';
+import {LoginComponent} from '../login/login.component';
+import {SignupComponent} from '../signup/signup.component';
 import {APP_BASE_HREF} from '@angular/common';
-import {MyprofileComponent} from '../myprofile/myprofile.component';
 
-describe('SignupComponent', () => {
-  let component: SignupComponent;
-  let fixture: ComponentFixture<SignupComponent>;
+describe('MyprofileComponent', () => {
+  let component: MyprofileComponent;
+  let fixture: ComponentFixture<MyprofileComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -107,11 +107,12 @@ describe('SignupComponent', () => {
         FlexLayoutModule
       ],
       providers: [{provide: APP_BASE_HREF, useValue: '/'}]
-    }).compileComponents();
+    })
+    .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SignupComponent);
+    fixture = TestBed.createComponent(MyprofileComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
