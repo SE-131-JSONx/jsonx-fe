@@ -78,6 +78,8 @@ export class BackendService {
 
     return this.http.get(globals.BASE + globals.USER_DETAILS + id, headers).subscribe(
       (r: any) => {
+        r.created = new Date(r.created.replace(/-/g, '/'));
+        r.updated = r.updated ? new Date(r.created.replace(/-/g, '/')) : null;
         next(null, r);
       },
       (error: any) => {
