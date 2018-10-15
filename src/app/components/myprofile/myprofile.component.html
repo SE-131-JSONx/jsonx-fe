@@ -58,7 +58,7 @@
 
       <mat-card-actions class="text-left pad-16">
         <button mat-raised-button color="primary"
-                (click)="openEditUserDialog(profile)"
+                (click)="openEditUserDialog()"
                 [disabled]="(name.invalid || surname.invalid || email.invalid) || (name.value == profile.name && surname.value == profile.surname && email.value == profile.email)"
         >
           Save
