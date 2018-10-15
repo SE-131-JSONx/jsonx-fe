@@ -1,0 +1,19 @@
+@mixin attr-vh($attr, $attr-count: 100, $attr-steps: 1, $unit: 'vh') {
+  $attr-list: null;
+  @for $i from 1 through $attr-count {
+    $attr-value: $attr-steps * $i;
+
+    .#{$attr}#{$attr-value} {
+      height: #{$attr-value}#{$unit} !important;
+    }
+
+    $attr-list: append($attr-list, unquote(".#{$attr}-#{$attr-value}"), comma);
+  }
+
+  #{$attr-list} {
+    //append style to all classes
+  }
+}
+
+
+@include attr-vh('vh-');

@@ -47,6 +47,9 @@ import {DashboardComponent} from './components/dashboard/dashboard.component';
 import {LoginComponent} from './components/login/login.component';
 import {SignupComponent} from './components/signup/signup.component';
 import {MyprofileComponent} from './components/myprofile/myprofile.component';
+import {ExplorerComponent} from './components/explorer/explorer.component';
+import {MonacoEditorModule} from 'ngx-monaco-editor';
+import {NgxJsonViewerModule} from 'ngx-json-viewer';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -57,6 +60,7 @@ describe('AppComponent', () => {
         LoginComponent,
         SignupComponent,
         MyprofileComponent,
+        ExplorerComponent
       ],
       imports: [
         BrowserModule,
@@ -100,7 +104,9 @@ describe('AppComponent', () => {
         HttpClientModule,
         ReactiveFormsModule,
         FormsModule,
-        FlexLayoutModule
+        FlexLayoutModule,
+        NgxJsonViewerModule,
+        MonacoEditorModule.forRoot()
       ],
       providers: [{provide: APP_BASE_HREF, useValue: '/'}]
     }).compileComponents();

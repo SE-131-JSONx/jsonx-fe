@@ -50,6 +50,9 @@ import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {APP_BASE_HREF} from '@angular/common';
+import {ExplorerComponent} from '../../components/explorer/explorer.component';
+import {NgxJsonViewerModule} from 'ngx-json-viewer';
+import {MonacoEditorModule} from 'ngx-monaco-editor';
 
 describe('EditUserDialogComponent', () => {
   let component: EditUserDialogComponent;
@@ -63,6 +66,7 @@ describe('EditUserDialogComponent', () => {
         LoginComponent,
         SignupComponent,
         MyprofileComponent,
+        ExplorerComponent,
         EditUserDialogComponent
       ],
       imports: [
@@ -107,7 +111,9 @@ describe('EditUserDialogComponent', () => {
         HttpClientModule,
         ReactiveFormsModule,
         FormsModule,
-        FlexLayoutModule
+        FlexLayoutModule,
+        NgxJsonViewerModule,
+        MonacoEditorModule.forRoot()
       ],
       providers: [
         {provide: APP_BASE_HREF, useValue: '/'},

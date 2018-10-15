@@ -48,6 +48,9 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {APP_BASE_HREF} from '@angular/common';
 import {MyprofileComponent} from '../myprofile/myprofile.component';
+import {ExplorerComponent} from '../explorer/explorer.component';
+import {NgxJsonViewerModule} from 'ngx-json-viewer';
+import {MonacoEditorModule} from 'ngx-monaco-editor';
 
 describe('SignupComponent', () => {
   let component: SignupComponent;
@@ -61,6 +64,7 @@ describe('SignupComponent', () => {
         LoginComponent,
         SignupComponent,
         MyprofileComponent,
+        ExplorerComponent
       ],
       imports: [
         BrowserModule,
@@ -104,7 +108,9 @@ describe('SignupComponent', () => {
         HttpClientModule,
         ReactiveFormsModule,
         FormsModule,
-        FlexLayoutModule
+        FlexLayoutModule,
+        NgxJsonViewerModule,
+        MonacoEditorModule.forRoot()
       ],
       providers: [{provide: APP_BASE_HREF, useValue: '/'}]
     }).compileComponents();

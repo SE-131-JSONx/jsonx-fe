@@ -49,6 +49,10 @@ import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { MyprofileComponent } from './components/myprofile/myprofile.component';
 import { EditUserDialogComponent } from './dialogs/edit-user-dialog/edit-user-dialog.component';
+import { ExplorerComponent } from './components/explorer/explorer.component';
+import { NgxJsonViewerModule } from 'ngx-json-viewer';
+import { MonacoEditorModule } from 'ngx-monaco-editor';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,7 +60,8 @@ import { EditUserDialogComponent } from './dialogs/edit-user-dialog/edit-user-di
     LoginComponent,
     SignupComponent,
     MyprofileComponent,
-    EditUserDialogComponent
+    EditUserDialogComponent,
+    ExplorerComponent
   ],
   entryComponents: [
     EditUserDialogComponent,
@@ -103,7 +108,9 @@ import { EditUserDialogComponent } from './dialogs/edit-user-dialog/edit-user-di
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    NgxJsonViewerModule,
+    MonacoEditorModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]
