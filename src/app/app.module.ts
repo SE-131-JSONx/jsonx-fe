@@ -48,13 +48,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { MyprofileComponent } from './components/myprofile/myprofile.component';
+import { EditUserDialogComponent } from './dialogs/edit-user-dialog/edit-user-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
     LoginComponent,
     SignupComponent,
-    MyprofileComponent
+    MyprofileComponent,
+    EditUserDialogComponent
+  ],
+  entryComponents: [
+    EditUserDialogComponent,
   ],
   imports: [
     BrowserModule,

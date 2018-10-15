@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { globals } from '../util/globals';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
+import { UserDetails } from '../util/interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -59,10 +60,23 @@ export class BackendService {
   /**
    * User
    * */
+  updateUserDetails(id: any, details: UserDetails, next) {
+    const headers = globals.AUTH_HEADERS;
+
+    return this.http.put(globals.BASE + globals.USER_DETAILS + id, details, headers).subscribe(
+      (r: any) => {
+        next(null, r);
+      },
+      (error: any) => {
+        this.openSnackBar(error.error.message, 2000);
+        next(error, null);
+      });
+  }
+
   getUserDetails(id: any, next) {
     const headers = globals.AUTH_HEADERS;
 
-    return this.http.get(globals.BASE + globals.GET_USER_DETAILS + id, headers).subscribe(
+    return this.http.get(globals.BASE + globals.USER_DETAILS + id, headers).subscribe(
       (r: any) => {
         next(null, r);
       },

@@ -1,10 +1,16 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MyprofileComponent } from './myprofile.component';
+import { EditUserDialogComponent } from './edit-user-dialog.component';
+import {AppComponent} from '../../app.component';
+import {DashboardComponent} from '../../components/dashboard/dashboard.component';
+import {LoginComponent} from '../../components/login/login.component';
+import {SignupComponent} from '../../components/signup/signup.component';
+import {MyprofileComponent} from '../../components/myprofile/myprofile.component';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AppRoutingModule} from '../../app-routing.module';
 import {
+  MAT_DIALOG_DATA,
   MatAutocompleteModule,
   MatBadgeModule,
   MatBottomSheetModule,
@@ -14,7 +20,7 @@ import {
   MatCheckboxModule,
   MatChipsModule,
   MatDatepickerModule,
-  MatDialogModule,
+  MatDialogModule, MatDialogRef,
   MatDividerModule,
   MatExpansionModule,
   MatGridListModule,
@@ -43,16 +49,11 @@ import {
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {FlexLayoutModule} from '@angular/flex-layout';
-import {AppComponent} from '../../app.component';
-import {DashboardComponent} from '../dashboard/dashboard.component';
-import {LoginComponent} from '../login/login.component';
-import {SignupComponent} from '../signup/signup.component';
 import {APP_BASE_HREF} from '@angular/common';
-import {EditUserDialogComponent} from '../../dialogs/edit-user-dialog/edit-user-dialog.component';
 
-describe('MyprofileComponent', () => {
-  let component: MyprofileComponent;
-  let fixture: ComponentFixture<MyprofileComponent>;
+describe('EditUserDialogComponent', () => {
+  let component: EditUserDialogComponent;
+  let fixture: ComponentFixture<EditUserDialogComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -108,13 +109,17 @@ describe('MyprofileComponent', () => {
         FormsModule,
         FlexLayoutModule
       ],
-      providers: [{provide: APP_BASE_HREF, useValue: '/'}]
+      providers: [
+        {provide: APP_BASE_HREF, useValue: '/'},
+        { provide: MAT_DIALOG_DATA, useValue: {} },
+        { provide: MatDialogRef, useValue: {} }
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MyprofileComponent);
+    fixture = TestBed.createComponent(EditUserDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
