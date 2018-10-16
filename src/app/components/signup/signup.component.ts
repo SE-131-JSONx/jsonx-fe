@@ -54,11 +54,8 @@ export class SignupComponent implements OnInit {
     this.loadingService.start('Signing up...');
     this.authService.signUp(this.name.value, this.surname.value, this.email.value, this.username.value, this.password.value,
       (error, r) => {
-        if (error) {
-          console.log(error);
-          this.authService.openSnackBar(error.error.message, 3000);
-        } else {
-          this.router.navigateByUrl('/dashboard');
+        if (!error) {
+          this.router.navigateByUrl('/login');
         }
         this.loadingService.stop();
      });

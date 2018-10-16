@@ -34,10 +34,10 @@ export class BackendService {
     return this.http.post(globals.BASE + globals.LOGIN, body, headers).subscribe(
       (r: any) => {
         localStorage.setItem(globals.STORAGE_KEY, r.token);
-        console.log(r);
         next(null, r);
       },
       (error: any) => {
+        console.log(error);
         this.openSnackBar(error.error.message, 2000);
         next(error, null);
       });
@@ -49,21 +49,20 @@ export class BackendService {
     this.router.navigate(['/login']);
   }
 
-  signUp(name: string, surname: string, email: string, username: string, password: string , next) {
-
+  signUp(name: string, surname: string, email: string, login: string, password: string , next) {
     const headers = globals.HEADERS;
 
     const body = {
       name: name,
       surname: surname,
       email: email,
-      username: username,
+      login: login,
       password: password
     };
 
     return this.http.post(globals.BASE + globals.USER, body, headers).subscribe(
       (r: any) => {
-        localStorage.setItem(globals.STORAGE_KEY, r.token);
+        this.openSnackBar('User created, please login!', 2000);
         next(null, r);
       },
       (error: any) => {
