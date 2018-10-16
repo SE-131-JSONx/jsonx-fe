@@ -13,12 +13,12 @@ export class BackendService {
 
   constructor(private http: HttpClient,
               private router: Router,
-              private snackbar: MatSnackBar) { }
+              private snackBar: MatSnackBar) { }
 
+  // noinspection JSMethodCanBeStatic
   /**
    * Authentication
    * */
-
   get isAuthenticated() {
     return !!localStorage.getItem(globals.STORAGE_KEY);
   }
@@ -61,10 +61,9 @@ export class BackendService {
       password: password
     };
 
-    return this.http.post(globals.BASE + globals.SIGNUP, body, headers).subscribe(
+    return this.http.post(globals.BASE + globals.USER, body, headers).subscribe(
       (r: any) => {
-        localStorage.setItem(this.STORAGE_KEY, r.token);
-        console.log(r);
+        localStorage.setItem(globals.STORAGE_KEY, r.token);
         next(null, r);
       },
       (error: any) => {
@@ -79,7 +78,7 @@ export class BackendService {
   updateUserDetails(id: any, details: UserDetails, next) {
     const headers = globals.AUTH_HEADERS;
 
-    return this.http.put(globals.BASE + globals.USER_DETAILS + id, details, headers).subscribe(
+    return this.http.put(globals.BASE + globals.USER + '/' + id, details, headers).subscribe(
       (r: any) => {
         next(null, r);
       },
@@ -92,7 +91,7 @@ export class BackendService {
   getUserDetails(id: any, next) {
     const headers = globals.AUTH_HEADERS;
 
-    return this.http.get(globals.BASE + globals.USER_DETAILS + id, headers).subscribe(
+    return this.http.get(globals.BASE + globals.USER + '/' + id, headers).subscribe(
       (r: any) => {
         r.created = r.created ? new Date(r.created.replace(/-/g, '/')) : null;
         r.updated = r.updated ? new Date(r.updated.replace(/-/g, '/')) : null;
@@ -108,7 +107,7 @@ export class BackendService {
    * Utilities
    * */
   openSnackBar(message: string, duration: number) {
-    this.snackbar.open(message, null, {
+    this.snackBar.open(message, null, {
       duration: duration || 2000,
     });
   }
