@@ -1,0 +1,70 @@
+<div class="py-2" fxLayout="row" fxLayoutAlign="center center">
+
+  <div class="px-2" fxLayout="column" fxLayoutAlign="space-around stretch">
+
+    <mat-card>
+      <img mat-card-image class="card-image" src="../../../assets/images/38.jpg">
+      <mat-card-content>
+        <div class="row">
+          <div class="col-12 col-sm-2 py-2 py-sm-0" fxLayout="column" fxLayoutAlign="center center">
+              <i class="material-icons fs-64">
+                account_circle
+              </i>
+          </div>
+          <div class="col-12 offset-sm-1 col-sm-2 py-2 py-sm-0" fxLayout="column" fxLayoutAlign="center center">
+            <h4 class="mat-card-header m-0 no-wrap">{{ profile.name }} {{ profile.surname }}</h4>
+            <p class="text-muted m-0">{{ profile.email }}</p>
+          </div>
+          <div class="col-12 col-sm-2 py-2 py-sm-0" fxLayout="column" fxLayoutAlign="center center">
+            <h4 class="mat-card-header m-0">{{ profile.json_count }}</h4>
+            <p class="text-muted m-0">JSONs</p>
+          </div>
+          <div class="col-12 col-sm-2 py-2 py-sm-0" fxLayout="column" fxLayoutAlign="center center">
+            <h4 class="mat-card-header m-0">{{ profile.team_count }}</h4>
+            <p class="text-muted m-0">Teams</p>
+          </div>
+          <div class="col-12 col-sm-2 py-2 py-sm-0" fxLayout="column" fxLayoutAlign="center center">
+            <h4 class="mat-card-header m-0">{{ profile.created | date}}</h4>
+            <p class="text-muted m-0">Joined</p>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="my-3">
+      <mat-card-content>
+        <h4 class="mat-card-header m-0">Edit Details</h4>
+        <div class="row py-1">
+          <div class="col-12 col-sm-6">
+            <mat-form-field fxFill="true">
+              <input matInput placeholder="First name" [formControl]="name">
+            </mat-form-field>
+          </div>
+          <div class="col-12 col-sm-6">
+            <mat-form-field fxFill="true">
+              <input matInput placeholder="Last name" [formControl]="surname">
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row pb-1">
+          <div class="col-12 col-sm-6">
+            <mat-form-field fxFill="true">
+              <input matInput placeholder="Email" [formControl]="email">
+            </mat-form-field>
+          </div>
+        </div>
+      </mat-card-content>
+
+      <mat-card-actions class="text-left pad-16">
+        <button mat-raised-button color="primary"
+                (click)="openEditUserDialog()"
+                [disabled]="(name.invalid || surname.invalid || email.invalid) || (name.value == profile.name && surname.value == profile.surname && email.value == profile.email)"
+        >
+          Save
+        </button>
+      </mat-card-actions>
+    </mat-card>
+
+  </div>
+</div>

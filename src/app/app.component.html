@@ -1,40 +1,63 @@
+<div fullscreen>
 
-
-<mat-toolbar class="fixed-bar" color="primary">
-  <mat-toolbar-row>
-    <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm="true">
-      <mat-icon>menu</mat-icon>
-    </button>
-    <span class="clickable" [routerLink]="['/dashboard']">{{ title }}</span>
-    <i class="material-icons p-1 mt-1">compare_arrows</i>
-    {{subtitles[router.url]}}
-    <mat-spinner color="warn" [diameter]="30" class="mx-3" *ngIf="loadingService.loading"></mat-spinner>
-    <span class="fs-12" *ngIf="loadingService.loading">{{loadingService.message}}</span>
-    <span class="fill-remaining-space"></span>
-    <span class="menu-spacer"></span>
-    <div fxShow="true" fxHide.lt-md>
-      <!-- The following menu items will be hidden on both SM and XS screen sizes -->
-      <button mat-button [routerLink]="['/dashboard']" *ngIf="authService.isAuthenticated">
-        <span>Dashboard</span>
+  <mat-toolbar class="fixed-bar" color="primary">
+    <mat-toolbar-row>
+      <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm="true">
+        <mat-icon>menu</mat-icon>
       </button>
-      <button mat-button [routerLink]="['/login']" *ngIf="!authService.isAuthenticated">
-        <span>Login</span>
-      </button>
-      <button mat-button [routerLink]="['/signup']" *ngIf="!authService.isAuthenticated">
-        <span>Signup</span>
-      </button>
-      <button mat-button *ngIf="authService.isAuthenticated" (click)="authService.logout()">Logout</button>
-    </div>
-  </mat-toolbar-row>
-</mat-toolbar>
-  <mat-sidenav-container fullscreen class="bg-transparent">
+      <span class="clickable" [routerLink]="['/dashboard']">{{ title }}</span>
+      <i class="material-icons p-1 mt-1">compare_arrows</i>
+      {{subtitles[router.url]}}
+      <mat-spinner color="warn" [diameter]="30" class="mx-3" *ngIf="loadingService.loading"></mat-spinner>
+      <span class="fs-12" *ngIf="loadingService.loading">{{loadingService.message}}</span>
+      <span class="fill-remaining-space"></span>
+      <span class="menu-spacer"></span>
+      <div fxShow="true" fxHide.lt-md>
+        <!-- The following menu items will be hidden on both SM and XS screen sizes -->
+        <button mat-button [routerLink]="['/dashboard']" *ngIf="authService.isAuthenticated">
+          <span>Dashboard</span>
+        </button>
+        <button mat-button [routerLink]="['/explorer']" *ngIf="authService.isAuthenticated">
+          <span>Explorer</span>
+        </button>
+        <button mat-button [routerLink]="['/myprofile']" *ngIf="authService.isAuthenticated">
+          <span>My Profile</span>
+        </button>
+        <button mat-button [routerLink]="['/login']" *ngIf="!authService.isAuthenticated">
+          <span>Login</span>
+        </button>
+        <button mat-button [routerLink]="['/signup']" *ngIf="!authService.isAuthenticated">
+          <span>Signup</span>
+        </button>
+        <button mat-button *ngIf="authService.isAuthenticated" (click)="authService.logout()">Logout</button>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <mat-sidenav-container class="bg-transparent">
     <mat-sidenav #sidenav>
-      <mat-nav-list class="d-grid">
-        <button *ngFor="let route of routes;" mat-button [routerLink]=route[0] (click)="sidenav.toggle()">{{route[1]}}</button>
+      <mat-nav-list>
+        <button mat-button class="w-100" [routerLink]="['/dashboard']" *ngIf="authService.isAuthenticated" (click)="sidenav.toggle()">
+          <span>Dashboard</span>
+        </button>
+        <button mat-button class="w-100" [routerLink]="['/explorer']" *ngIf="authService.isAuthenticated" (click)="sidenav.toggle()">
+          <span>Explorer</span>
+        </button>
+        <button mat-button class="w-100" [routerLink]="['/myprofile']" *ngIf="authService.isAuthenticated" (click)="sidenav.toggle()">
+          <span>My Profile</span>
+        </button>
+        <button mat-button class="w-100" [routerLink]="['/login']" *ngIf="!authService.isAuthenticated" (click)="sidenav.toggle()">
+          <span>Login</span>
+        </button>
+        <button mat-button class="w-100" [routerLink]="['/signup']" *ngIf="!authService.isAuthenticated" (click)="sidenav.toggle()">
+          <span>Signup</span>
+        </button>
+        <button mat-button class="w-100" *ngIf="authService.isAuthenticated" (click)="authService.logout()" (click)="sidenav.toggle()">Logout</button>
       </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>
       <router-outlet></router-outlet>
     </mat-sidenav-content>
   </mat-sidenav-container>
+
+</div>
 

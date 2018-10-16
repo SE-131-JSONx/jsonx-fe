@@ -14,6 +14,8 @@ export class AppComponent {
     '/login': 'login',
     '/signup': 'signup',
     '/dashboard': 'dashboard',
+    '/myprofile': 'my profile',
+    '/explorer': 'explorer',
   };
 
   routes = [

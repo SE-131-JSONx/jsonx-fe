@@ -1,13 +1,16 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DashboardComponent } from './dashboard.component';
-import { AppComponent } from '../../app.component';
-import { LoginComponent } from '../login/login.component';
-import { SignupComponent } from '../signup/signup.component';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AppRoutingModule } from '../../app-routing.module';
+import { EditUserDialogComponent } from './edit-user-dialog.component';
+import {AppComponent} from '../../app.component';
+import {DashboardComponent} from '../../components/dashboard/dashboard.component';
+import {LoginComponent} from '../../components/login/login.component';
+import {SignupComponent} from '../../components/signup/signup.component';
+import {MyprofileComponent} from '../../components/myprofile/myprofile.component';
+import {BrowserModule} from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {AppRoutingModule} from '../../app-routing.module';
 import {
+  MAT_DIALOG_DATA,
   MatAutocompleteModule,
   MatBadgeModule,
   MatBottomSheetModule,
@@ -17,7 +20,7 @@ import {
   MatCheckboxModule,
   MatChipsModule,
   MatDatepickerModule,
-  MatDialogModule,
+  MatDialogModule, MatDialogRef,
   MatDividerModule,
   MatExpansionModule,
   MatGridListModule,
@@ -43,18 +46,17 @@ import {
   MatToolbarModule,
   MatTooltipModule, MatTreeModule
 } from '@angular/material';
-import { HttpClientModule } from '@angular/common/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { APP_BASE_HREF } from '@angular/common';
-import { MyprofileComponent } from '../myprofile/myprofile.component';
-import { ExplorerComponent } from '../explorer/explorer.component';
-import { MonacoEditorModule } from 'ngx-monaco-editor';
-import { NgxJsonViewerModule } from 'ngx-json-viewer';
+import {HttpClientModule} from '@angular/common/http';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {FlexLayoutModule} from '@angular/flex-layout';
+import {APP_BASE_HREF} from '@angular/common';
+import {ExplorerComponent} from '../../components/explorer/explorer.component';
+import {NgxJsonViewerModule} from 'ngx-json-viewer';
+import {MonacoEditorModule} from 'ngx-monaco-editor';
 
-describe('DashboardComponent', () => {
-  let component: DashboardComponent;
-  let fixture: ComponentFixture<DashboardComponent>;
+describe('EditUserDialogComponent', () => {
+  let component: EditUserDialogComponent;
+  let fixture: ComponentFixture<EditUserDialogComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -64,7 +66,8 @@ describe('DashboardComponent', () => {
         LoginComponent,
         SignupComponent,
         MyprofileComponent,
-        ExplorerComponent
+        ExplorerComponent,
+        EditUserDialogComponent
       ],
       imports: [
         BrowserModule,
@@ -112,12 +115,17 @@ describe('DashboardComponent', () => {
         NgxJsonViewerModule,
         MonacoEditorModule.forRoot()
       ],
-      providers: [{provide: APP_BASE_HREF, useValue: '/'}]
-    }).compileComponents();
+      providers: [
+        {provide: APP_BASE_HREF, useValue: '/'},
+        { provide: MAT_DIALOG_DATA, useValue: {} },
+        { provide: MatDialogRef, useValue: {} }
+      ]
+    })
+      .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DashboardComponent);
+    fixture = TestBed.createComponent(EditUserDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
