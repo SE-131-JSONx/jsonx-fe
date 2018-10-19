@@ -17,7 +17,7 @@ export const globals = {
 
   // ENDPOINTS
   LOGIN: '/login',
-  USER_DETAILS: '/user/',
+  USER: '/user',
 
   get HEADERS() {
     return {
