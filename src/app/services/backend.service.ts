@@ -103,6 +103,22 @@ export class BackendService {
   }
 
   /**
+   * JSON
+   * */
+  searchJson(q: string, next) {
+    const headers = globals.AUTH_HEADERS;
+
+    return this.http.get(globals.BASE + globals.JSON + '?q-' + q, headers).subscribe(
+      (r: any) => {
+          next(null, r.json);
+        },
+      (e) => {
+        this.openSnackBar(e.error.message, 2000);
+        next(e, null);
+      });
+  }
+
+  /**
    * Utilities
    * */
   openSnackBar(message: string, duration: number) {

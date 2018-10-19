@@ -16,11 +16,8 @@ export class AppComponent {
     '/dashboard': 'dashboard',
     '/myprofile': 'my profile',
     '/explorer': 'explorer',
+    '/json': 'my json',
   };
-
-  routes = [
-    ['/dashboard', 'Dashboard'],
-  ];
 
   constructor(public router: Router, public loadingService: LoadingService, public authService: BackendService) {}
 }

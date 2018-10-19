@@ -52,6 +52,9 @@ import { EditUserDialogComponent } from './dialogs/edit-user-dialog/edit-user-di
 import { ExplorerComponent } from './components/explorer/explorer.component';
 import { NgxJsonViewerModule } from 'ngx-json-viewer';
 import { MonacoEditorModule } from 'ngx-monaco-editor';
+import { MyJsonComponent } from './components/my-json/my-json.component';
+import { MyTeamsComponent } from './components/my-teams/my-teams.component';
+import { TruncatePipe } from './pipes/truncate.pipe';
 
 @NgModule({
   declarations: [
@@ -61,7 +64,10 @@ import { MonacoEditorModule } from 'ngx-monaco-editor';
     SignupComponent,
     MyprofileComponent,
     EditUserDialogComponent,
-    ExplorerComponent
+    ExplorerComponent,
+    MyJsonComponent,
+    MyTeamsComponent,
+    TruncatePipe
   ],
   entryComponents: [
     EditUserDialogComponent,

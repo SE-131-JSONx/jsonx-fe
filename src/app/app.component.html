@@ -20,6 +20,9 @@
         <button mat-button [routerLink]="['/explorer']" *ngIf="authService.isAuthenticated">
           <span>Explorer</span>
         </button>
+        <button mat-button [routerLink]="['/json']" *ngIf="authService.isAuthenticated">
+          <span>My JSON</span>
+        </button>
         <button mat-button [routerLink]="['/myprofile']" *ngIf="authService.isAuthenticated">
           <span>My Profile</span>
         </button>
@@ -41,6 +44,9 @@
         </button>
         <button mat-button class="w-100" [routerLink]="['/explorer']" *ngIf="authService.isAuthenticated" (click)="sidenav.toggle()">
           <span>Explorer</span>
+        </button>
+        <button mat-button class="w-100" [routerLink]="['/json']" *ngIf="authService.isAuthenticated" (click)="sidenav.toggle()">
+          <span>My JSON</span>
         </button>
         <button mat-button class="w-100" [routerLink]="['/myprofile']" *ngIf="authService.isAuthenticated" (click)="sidenav.toggle()">
           <span>My Profile</span>
