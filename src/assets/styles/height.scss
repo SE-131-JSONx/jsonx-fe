@@ -1,10 +1,10 @@
-@mixin attr-x($attr, $attr-count: 128, $attr-steps: 1, $unit: 'px') {
+@mixin attr-vh($attr, $attr-count: 100, $attr-steps: 1, $unit: 'vh') {
   $attr-list: null;
   @for $i from 1 through $attr-count {
     $attr-value: $attr-steps * $i;
 
     .#{$attr}#{$attr-value} {
-      font-size: #{$attr-value}#{$unit};
+      height: #{$attr-value}#{$unit} !important;
     }
 
     $attr-list: append($attr-list, unquote(".#{$attr}-#{$attr-value}"), comma);
@@ -16,4 +16,4 @@
 }
 
 
-@include attr-x('fs-');
+@include attr-vh('vh-');

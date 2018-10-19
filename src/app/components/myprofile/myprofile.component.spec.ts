@@ -1,12 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DashboardComponent } from './dashboard.component';
-import { AppComponent } from '../../app.component';
-import { LoginComponent } from '../login/login.component';
-import { SignupComponent } from '../signup/signup.component';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AppRoutingModule } from '../../app-routing.module';
+import { MyprofileComponent } from './myprofile.component';
+import {BrowserModule} from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {AppRoutingModule} from '../../app-routing.module';
 import {
   MatAutocompleteModule,
   MatBadgeModule,
@@ -43,18 +40,22 @@ import {
   MatToolbarModule,
   MatTooltipModule, MatTreeModule
 } from '@angular/material';
-import { HttpClientModule } from '@angular/common/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { APP_BASE_HREF } from '@angular/common';
-import { MyprofileComponent } from '../myprofile/myprofile.component';
-import { ExplorerComponent } from '../explorer/explorer.component';
-import { MonacoEditorModule } from 'ngx-monaco-editor';
-import { NgxJsonViewerModule } from 'ngx-json-viewer';
+import {HttpClientModule} from '@angular/common/http';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {FlexLayoutModule} from '@angular/flex-layout';
+import {AppComponent} from '../../app.component';
+import {DashboardComponent} from '../dashboard/dashboard.component';
+import {LoginComponent} from '../login/login.component';
+import {SignupComponent} from '../signup/signup.component';
+import {APP_BASE_HREF} from '@angular/common';
+import {EditUserDialogComponent} from '../../dialogs/edit-user-dialog/edit-user-dialog.component';
+import {ExplorerComponent} from '../explorer/explorer.component';
+import {NgxJsonViewerModule} from 'ngx-json-viewer';
+import {MonacoEditorModule} from 'ngx-monaco-editor';
 
-describe('DashboardComponent', () => {
-  let component: DashboardComponent;
-  let fixture: ComponentFixture<DashboardComponent>;
+describe('MyprofileComponent', () => {
+  let component: MyprofileComponent;
+  let fixture: ComponentFixture<MyprofileComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -64,7 +65,8 @@ describe('DashboardComponent', () => {
         LoginComponent,
         SignupComponent,
         MyprofileComponent,
-        ExplorerComponent
+        ExplorerComponent,
+        EditUserDialogComponent
       ],
       imports: [
         BrowserModule,
@@ -113,11 +115,12 @@ describe('DashboardComponent', () => {
         MonacoEditorModule.forRoot()
       ],
       providers: [{provide: APP_BASE_HREF, useValue: '/'}]
-    }).compileComponents();
+    })
+    .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DashboardComponent);
+    fixture = TestBed.createComponent(MyprofileComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

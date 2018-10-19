@@ -1,0 +1,13 @@
+<div class="row h-100 p-2">
+  <div class="col-12 col-sm-6 h-100">
+    <mat-card class="h-100">
+      <ngx-monaco-editor class="editor-container" [options]="options" [(ngModel)]="jsonEditor"></ngx-monaco-editor>
+
+    </mat-card>
+  </div>
+  <div class="col-12 col-sm-6">
+    <mat-card class="h-100">
+      <ngx-json-viewer [json]="json" [expanded]="true"></ngx-json-viewer>
+    </mat-card>
+  </div>
+</div>

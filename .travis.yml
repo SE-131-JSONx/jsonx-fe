@@ -4,10 +4,6 @@ node_js:
 sudo: true
 dist: trusty
 
-branches:
-  only:
-  - cit
-
 before_script:
 - export CHROME_BIN=/usr/bin/google-chrome
 - export DISPLAY=:99.0
@@ -18,4 +14,4 @@ before_script:
 - sudo dpkg -i google-chrome*.deb
 
 script:
-- ng test --watch=false
+- ng build --prod
