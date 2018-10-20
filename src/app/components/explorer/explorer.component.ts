@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { DataService } from '../../services/data.service';
 import { SaveJsonDialogComponent } from '../../dialogs/save-json-dialog/save-json-dialog.component';
 import { UpdateJsonDialogComponent } from '../../dialogs/update-json-dialog/update-json-dialog.component';
@@ -95,11 +95,15 @@ export class ExplorerComponent implements OnInit {
     });
   }
 
-  openUpdateJsonDialog(json) {
+  openUpdateJsonDialog() {
     const dialogRef = this.dialog.open(UpdateJsonDialogComponent, {
       width: '500px',
       height: '550px',
-      data: json,
+      data: {
+        json: this.json,
+        title: this.dataService.json.title,
+        id: this.dataService.json.id
+      }
     });
     dialogRef.afterClosed().subscribe((updated) => {
       if (updated) {
