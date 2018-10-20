@@ -1,6 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { DataService } from '../../services/data.service';
-import {NgxEditorModel} from 'ngx-monaco-editor';
+import { SaveJsonDialogComponent } from '../../dialogs/save-json-dialog/save-json-dialog.component';
+import { UpdateJsonDialogComponent } from '../../dialogs/update-json-dialog/update-json-dialog.component';
+import { MatDialog } from '@angular/material';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-explorer',
@@ -25,11 +28,15 @@ export class ExplorerComponent implements OnInit {
     language: 'json'
   };
 
-  constructor(public dataService: DataService) { }
+  constructor(public dataService: DataService,
+              private dialog: MatDialog,
+              public router: Router
+  ) { }
 
   ngOnInit() {
     if (this.dataService.hasData) {
       this._jsonEditor = this.dataService.json.data;
+      this.json = JSON.parse(this.jsonEditor);
     } else if (this.defaultJson) {
       this._jsonEditor = JSON.stringify(this.defaultJson, null, '\t');
     }
@@ -49,7 +56,6 @@ export class ExplorerComponent implements OnInit {
   set jsonEditor(jsonEditor: string) {
     if (jsonEditor) {
       this.json = JSON.parse(jsonEditor);
-
       if (this.dataService.hasData && this.dataService.json.data === jsonEditor) {
         this.disableSave = true;
         this.disableUpdate = true;
@@ -75,6 +81,30 @@ export class ExplorerComponent implements OnInit {
 
   set json(value: object) {
     this._json = value;
+  }
+
+  openSaveJsonDialog() {
+    const dialogRef = this.dialog.open(SaveJsonDialogComponent, {
+      width: '500px',
+      height: '550px',
+      data: JSON.stringify(this.json, null, '\t'),
+    });
+    dialogRef.afterClosed().subscribe((saved) => {
+      if (saved) {
+        this.router.navigateByUrl('/json');      }
+    });
+  }
+
+  openUpdateJsonDialog(json) {
+    const dialogRef = this.dialog.open(UpdateJsonDialogComponent, {
+      width: '500px',
+      height: '550px',
+      data: json,
+    });
+    dialogRef.afterClosed().subscribe((updated) => {
+      if (updated) {
+        this.router.navigateByUrl('/json');      }
+    });
   }
 
 }

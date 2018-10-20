@@ -105,12 +105,25 @@ export class BackendService {
   /**
    * JSON
    * */
+  saveJson(details, next) {
+    const headers = globals.AUTH_HEADERS;
+
+    return this.http.post(globals.BASE + globals.JSON + '/save', details, headers).subscribe(
+      (r: any) => {
+        next(null, r);
+      },
+      (e) => {
+        this.openSnackBar(e.error.message, 2000);
+        next(e, null);
+      });
+  }
+
   deleteJson(jid: string, next) {
     const headers = globals.AUTH_HEADERS;
 
     return this.http.delete(globals.BASE + globals.JSON + '/' + jid, headers).subscribe(
       (r: any) => {
-        next(null, r.json);
+        next(null, r);
       },
       (e) => {
         this.openSnackBar(e.error.message, 2000);
@@ -121,7 +134,7 @@ export class BackendService {
   searchJson(q: string, next) {
     const headers = globals.AUTH_HEADERS;
 
-    return this.http.get(globals.BASE + globals.JSON + '?q=' + q, headers).subscribe(
+    return this.http.get(globals.BASE + globals.JSON, headers).subscribe(
       (r: any) => {
           next(null, r.json);
         },
