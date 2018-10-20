@@ -25,7 +25,7 @@ export class MyTeamsComponent implements OnInit {
     /*const dialogRef = this.dialog.open(EditJsonDialogComponent, {
       width: '500px',
       height: '550px',
-      data: json,
+      json: json,
     });
     dialogRef.afterClosed().subscribe((edited) => {
       if (edited) {
@@ -38,7 +38,7 @@ export class MyTeamsComponent implements OnInit {
     /*const dialogRef = this.dialog.open(DeleteJsonDialogComponent, {
       width: '500px',
       height: '550px',
-      data: organization,
+      json: organization,
     });
     dialogRef.afterClosed().subscribe((deleted) => {
       if (deleted) {

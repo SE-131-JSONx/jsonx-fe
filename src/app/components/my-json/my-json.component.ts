@@ -1,6 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { BackendService } from '../../services/backend.service';
+import {DeleteJsonDialogComponent} from '../../dialogs/delete-json-dialog/delete-json-dialog.component';
+import {DataService} from '../../services/data.service';
+import {JsonDetails} from '../../util/interfaces';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-my-json',
@@ -15,36 +19,31 @@ export class MyJsonComponent implements OnInit {
   displayedColumns: string[] = ['actions', 'title', 'data', 'size', 'created', 'updated'];
 
   constructor(public backendService: BackendService,
-              private dialog: MatDialog) { }
+              private dialog: MatDialog,
+              public dataService: DataService,
+              public router: Router) { }
 
   ngOnInit() {
     this.initializeDataSource();
   }
 
   viewJson(json): void {
-    /*const dialogRef = this.dialog.open(EditJsonDialogComponent, {
-      width: '500px',
-      height: '550px',
-      data: json,
-    });
-    dialogRef.afterClosed().subscribe((edited) => {
-      if (edited) {
-        this.initializeDataSource();
-      }
-    });*/
+    console.log(json);
+    this.dataService.json = <JsonDetails> json;
+    this.router.navigateByUrl('/explorer');
   }
 
   openDeleteJsonDialog(json) {
-    /*const dialogRef = this.dialog.open(DeleteJsonDialogComponent, {
+    const dialogRef = this.dialog.open(DeleteJsonDialogComponent, {
       width: '500px',
       height: '550px',
-      data: organization,
+      data: json,
     });
     dialogRef.afterClosed().subscribe((deleted) => {
       if (deleted) {
         this.initializeDataSource();
       }
-    });*/
+    });
   }
 
   initializeDataSource() {

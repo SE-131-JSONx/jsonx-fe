@@ -105,6 +105,19 @@ export class BackendService {
   /**
    * JSON
    * */
+  deleteJson(jid: string, next) {
+    const headers = globals.AUTH_HEADERS;
+
+    return this.http.delete(globals.BASE + globals.JSON + '/' + jid, headers).subscribe(
+      (r: any) => {
+        next(null, r.json);
+      },
+      (e) => {
+        this.openSnackBar(e.error.message, 2000);
+        next(e, null);
+      });
+  }
+
   searchJson(q: string, next) {
     const headers = globals.AUTH_HEADERS;
 

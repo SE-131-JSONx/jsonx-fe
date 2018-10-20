@@ -27,3 +27,11 @@ export interface UserDetails {
   surname: string;
   email: string;
 }
+
+export interface JsonDetails {
+  id: number;
+  title: string;
+  data: string;
+  created: string;
+  updated: string;
+}

@@ -56,6 +56,7 @@ import { MyJsonComponent } from './components/my-json/my-json.component';
 import { MyTeamsComponent } from './components/my-teams/my-teams.component';
 import { TruncatePipe } from './pipes/truncate.pipe';
 import { AccessLevelPipe } from './pipes/access-level.pipe';
+import { DeleteJsonDialogComponent } from './dialogs/delete-json-dialog/delete-json-dialog.component';
 
 @NgModule({
   declarations: [
@@ -69,10 +70,12 @@ import { AccessLevelPipe } from './pipes/access-level.pipe';
     MyJsonComponent,
     MyTeamsComponent,
     TruncatePipe,
-    AccessLevelPipe
+    AccessLevelPipe,
+    DeleteJsonDialogComponent
   ],
   entryComponents: [
     EditUserDialogComponent,
+    DeleteJsonDialogComponent
   ],
   imports: [
     BrowserModule,

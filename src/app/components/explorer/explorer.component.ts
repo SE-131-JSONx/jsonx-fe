@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import {DataService} from '../../services/data.service';
 
 
 const defaultJson: object = {
@@ -15,7 +16,6 @@ const defaultJson: object = {
   styleUrls: ['./explorer.component.scss']
 })
 export class ExplorerComponent implements OnInit {
-
   private _json: object = defaultJson;
   private _jsonEditor: string = JSON.stringify(defaultJson, null, '\t');
 
@@ -23,9 +23,12 @@ export class ExplorerComponent implements OnInit {
     language: 'json'
   };
 
-  constructor() { }
+  constructor(public dataService: DataService) { }
 
   ngOnInit() {
+    if (this.dataService.hasData) {
+      this._jsonEditor = this.dataService.json.data;
+    }
   }
 
   get jsonEditor(): string {
