@@ -1,14 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import {DataService} from '../../services/data.service';
-
-
-const defaultJson: object = {
-  text: 'Hello World!',
-  array: [1, 2, 3, 4, 5],
-  object: {
-    more_text: 'This is a nested object.'
-  }
-};
+import { DataService } from '../../services/data.service';
+import {NgxEditorModel} from 'ngx-monaco-editor';
 
 @Component({
   selector: 'app-explorer',
@@ -16,8 +8,18 @@ const defaultJson: object = {
   styleUrls: ['./explorer.component.scss']
 })
 export class ExplorerComponent implements OnInit {
-  private _json: object = defaultJson;
-  private _jsonEditor: string = JSON.stringify(defaultJson, null, '\t');
+  private _jsonEditor: string;
+  public defaultJson: object = {
+    text: 'Hello World!',
+    array: [1, 2, 3, 4, 5],
+    object: {
+      more_text: 'This is a nested object.'
+    }
+  };
+  private _json: object = this.defaultJson;
+
+  public disableSave = true;
+  public disableUpdate = true;
 
   options = {
     language: 'json'
@@ -28,7 +30,15 @@ export class ExplorerComponent implements OnInit {
   ngOnInit() {
     if (this.dataService.hasData) {
       this._jsonEditor = this.dataService.json.data;
+    } else if (this.defaultJson) {
+      this._jsonEditor = JSON.stringify(this.defaultJson, null, '\t');
     }
+  }
+
+  clearJson(): void {
+    this.dataService.json = null;
+    this._jsonEditor = '';
+    this.defaultJson = null;
   }
 
   get jsonEditor(): string {
@@ -39,8 +49,23 @@ export class ExplorerComponent implements OnInit {
   set jsonEditor(jsonEditor: string) {
     if (jsonEditor) {
       this.json = JSON.parse(jsonEditor);
+
+      if (this.dataService.hasData && this.dataService.json.data === jsonEditor) {
+        this.disableSave = true;
+        this.disableUpdate = true;
+      } else if (jsonEditor === JSON.stringify(this.defaultJson, null, '\t')) {
+        this.disableSave = true;
+      } else {
+        if (!this.dataService.hasData) {
+          this.disableUpdate = true;
+        } else {
+          this.disableUpdate = false;
+        }
+        this.disableSave = false;
+      }
     } else {
       this.json = {};
+      this.disableSave = true;
     }
   }
 

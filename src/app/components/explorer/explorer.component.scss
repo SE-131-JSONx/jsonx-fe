@@ -13,3 +13,9 @@ section {
 section.ngx-json-viewer {
   overflow: visible !important;
 }
+
+
+.fill-remaining-space {
+  display: flex;
+  flex: 1 1 auto;
+}
