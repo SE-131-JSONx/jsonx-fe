@@ -17,6 +17,7 @@ export class AppComponent {
     '/myprofile': 'my profile',
     '/explorer': 'explorer',
     '/json': 'my json',
+    '/team': 'my team',
   };
 
   constructor(public router: Router, public loadingService: LoadingService, public authService: BackendService) {}

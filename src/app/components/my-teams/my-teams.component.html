@@ -1,3 +1,60 @@
-<p>
-  my-teams works!
-</p>
+<mat-card class="bg-transparent h-100 px-4">
+  <mat-card-header>
+    <mat-card-subtitle>View and manage teams you are a part of.</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content class="mat-elevation-z1 overflow-x-auto">
+    <mat-toolbar class="mat-accent text-white">My Teams</mat-toolbar>
+
+    <mat-form-field class="px-3 pt-2 w-100">
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search">
+    </mat-form-field>
+
+    <table mat-table matSort matSortActive="created" matSortDirection="desc" [dataSource]="dataSource" class="w-100 h-100">
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Actions </th>
+        <td mat-cell *matCellDef="let element">
+          <a  (click)="viewTeam(element)">
+            <mat-icon class="clickable color-dark align" matTooltip="Manage Team"
+                      aria-label="Manage team">settings
+            </mat-icon>
+          </a>
+          <a (click)="openDeleteTeamDialog(element)">
+            <mat-icon class="clickable color-theme-pink" matTooltip="Delete Team"
+                      aria-label="Delete team">delete</mat-icon>
+          </a>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="members">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Members </th>
+        <td mat-cell *matCellDef="let element"> {{element.members}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="access-level">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Access Level </th>
+        <td mat-cell *matCellDef="let element"> {{element.access_level | accessLevel}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="created">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Created </th>
+        <td mat-cell *matCellDef="let element"> {{element.created | date: 'MM/dd/yyyy, h:mm a z'}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="updated">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Updated </th>
+        <td mat-cell *matCellDef="let element"> {{element.updated | date: 'MM/dd/yyyy, h:mm a z'}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+
+  </mat-card-content>
+</mat-card>

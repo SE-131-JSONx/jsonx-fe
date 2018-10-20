@@ -108,10 +108,27 @@ export class BackendService {
   searchJson(q: string, next) {
     const headers = globals.AUTH_HEADERS;
 
-    return this.http.get(globals.BASE + globals.JSON + '?q-' + q, headers).subscribe(
+    return this.http.get(globals.BASE + globals.JSON + '?q=' + q, headers).subscribe(
       (r: any) => {
           next(null, r.json);
         },
+      (e) => {
+        this.openSnackBar(e.error.message, 2000);
+        next(e, null);
+      });
+  }
+
+  /**
+   * TEAM
+   * */
+  searchTeam(q: string, next) {
+    const headers = globals.AUTH_HEADERS;
+
+    return this.http.get(globals.BASE + globals.TEAM, headers).subscribe(
+      (r: any) => {
+        console.log(r);
+        next(null, r.team);
+      },
       (e) => {
         this.openSnackBar(e.error.message, 2000);
         next(e, null);

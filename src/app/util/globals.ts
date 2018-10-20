@@ -19,6 +19,8 @@ export const globals = {
   LOGIN: '/login',
   USER: '/user',
   JSON: '/json',
+  TEAM: '/team',
+
 
   get HEADERS() {
     return {

@@ -23,6 +23,9 @@
         <button mat-button [routerLink]="['/json']" *ngIf="authService.isAuthenticated">
           <span>My JSON</span>
         </button>
+        <button mat-button [routerLink]="['/team']" *ngIf="authService.isAuthenticated">
+          <span>My Teams</span>
+        </button>
         <button mat-button [routerLink]="['/myprofile']" *ngIf="authService.isAuthenticated">
           <span>My Profile</span>
         </button>

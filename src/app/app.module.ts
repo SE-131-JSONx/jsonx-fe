@@ -55,6 +55,7 @@ import { MonacoEditorModule } from 'ngx-monaco-editor';
 import { MyJsonComponent } from './components/my-json/my-json.component';
 import { MyTeamsComponent } from './components/my-teams/my-teams.component';
 import { TruncatePipe } from './pipes/truncate.pipe';
+import { AccessLevelPipe } from './pipes/access-level.pipe';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,8 @@ import { TruncatePipe } from './pipes/truncate.pipe';
     ExplorerComponent,
     MyJsonComponent,
     MyTeamsComponent,
-    TruncatePipe
+    TruncatePipe,
+    AccessLevelPipe
   ],
   entryComponents: [
     EditUserDialogComponent,
