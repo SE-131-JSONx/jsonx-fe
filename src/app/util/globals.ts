@@ -28,11 +28,9 @@ export const globals = {
     };
   },
   get AUTH_HEADERS() {
-    return {
-      headers: new HttpHeaders({'Content-Type': 'application/json',
+    return new HttpHeaders({'Content-Type': 'application/json',
         'Cache-Control': 'no-cache',
         'Authorization': localStorage.getItem(this.STORAGE_KEY),
-        'Access-Control-Allow-Origin': '*'})
-    };
+        'Access-Control-Allow-Origin': '*'});
   },
 };

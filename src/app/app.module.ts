@@ -61,6 +61,7 @@ import { SaveJsonDialogComponent } from './dialogs/save-json-dialog/save-json-di
 import { UpdateJsonDialogComponent } from './dialogs/update-json-dialog/update-json-dialog.component';
 import {AuthInterceptorService} from './services/auth-interceptor.service';
 import {BackendService} from './services/backend.service';
+import { AddMemberDialogComponent } from './dialogs/add-member-dialog/add-member-dialog.component';
 
 @NgModule({
   declarations: [
@@ -77,13 +78,15 @@ import {BackendService} from './services/backend.service';
     AccessLevelPipe,
     DeleteJsonDialogComponent,
     SaveJsonDialogComponent,
-    UpdateJsonDialogComponent
+    UpdateJsonDialogComponent,
+    AddMemberDialogComponent
   ],
   entryComponents: [
     EditUserDialogComponent,
     DeleteJsonDialogComponent,
     SaveJsonDialogComponent,
-    UpdateJsonDialogComponent
+    UpdateJsonDialogComponent,
+    AddMemberDialogComponent
   ],
   imports: [
     BrowserModule,

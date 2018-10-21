@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { BackendService } from '../../services/backend.service';
+import {AddMemberDialogComponent} from '../../dialogs/add-member-dialog/add-member-dialog.component';
 
 @Component({
   selector: 'app-my-teams',
@@ -32,6 +33,19 @@ export class MyTeamsComponent implements OnInit {
         this.initializeDataSource();
       }
     });*/
+  }
+
+  addMember(team) {
+    const dialogRef = this.dialog.open(AddMemberDialogComponent, {
+      width: '500px',
+      height: '550px',
+      data: team,
+    });
+    dialogRef.afterClosed().subscribe((r) => {
+      if (r) {
+        this.initializeDataSource();
+      }
+    });
   }
 
   openDeleteTeamDialog(team) {

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import { globals } from '../util/globals';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
@@ -77,7 +77,7 @@ export class BackendService {
   updateUserDetails(id: any, details: UserDetails, next) {
     const headers = globals.AUTH_HEADERS;
 
-    return this.http.put(globals.BASE + globals.USER + '/' + id, details, headers).subscribe(
+    return this.http.put(globals.BASE + globals.USER + '/' + id, details, { headers: <HttpHeaders> headers }).subscribe(
       (r: any) => {
         next(null, r);
       },
@@ -90,7 +90,7 @@ export class BackendService {
   getUserDetails(id: any, next) {
     const headers = globals.AUTH_HEADERS;
 
-    return this.http.get(globals.BASE + globals.USER + '/' + id, headers).subscribe(
+    return this.http.get(globals.BASE + globals.USER + '/' + id, { headers: <HttpHeaders> headers }).subscribe(
       (r: any) => {
         r.created = r.created ? new Date(r.created.replace(/-/g, '/')) : null;
         r.updated = r.updated ? new Date(r.updated.replace(/-/g, '/')) : null;
@@ -102,13 +102,33 @@ export class BackendService {
       });
   }
 
+  searchUser(q: string, next) {
+    const headers = globals.AUTH_HEADERS;
+
+    const params = new HttpParams().set('q', q);
+
+    return this.http.get(globals.BASE + globals.USER, {headers: <HttpHeaders>headers, params: <HttpParams>params}).subscribe(
+      (r: any) => {
+        console.log(r);
+        r.user.forEach((j) => {
+          j.created = j.created ? new Date(j.created.replace(/-/g, '/')) : null;
+          j.updated = j.updated ? new Date(j.updated.replace(/-/g, '/')) : null;
+        });
+        next(null, r.user);
+      },
+      (e) => {
+        this.openSnackBar(e.error.message, 2000);
+        next(e, null);
+      });
+  }
+
   /**
    * JSON
    * */
   updateJson(jid, details, next) {
     const headers = globals.AUTH_HEADERS;
 
-    return this.http.put(globals.BASE + globals.JSON + '/' + jid, details, headers).subscribe(
+    return this.http.put(globals.BASE + globals.JSON + '/' + jid, details, { headers: <HttpHeaders> headers }).subscribe(
       (r: any) => {
         this.openSnackBar('JSON successfully updated', 3000);
         next(null, r);
@@ -122,7 +142,7 @@ export class BackendService {
   saveJson(details, next) {
     const headers = globals.AUTH_HEADERS;
 
-    return this.http.post(globals.BASE + globals.JSON + '/save', details, headers).subscribe(
+    return this.http.post(globals.BASE + globals.JSON + '/save', details, { headers: <HttpHeaders> headers }).subscribe(
       (r: any) => {
         next(null, r);
       },
@@ -135,7 +155,7 @@ export class BackendService {
   deleteJson(jid: string, next) {
     const headers = globals.AUTH_HEADERS;
 
-    return this.http.delete(globals.BASE + globals.JSON + '/' + jid, headers).subscribe(
+    return this.http.delete(globals.BASE + globals.JSON + '/' + jid, { headers: <HttpHeaders> headers }).subscribe(
       (r: any) => {
         next(null, r);
       },
@@ -148,7 +168,7 @@ export class BackendService {
   searchJson(q: string, next) {
     const headers = globals.AUTH_HEADERS;
 
-    return this.http.get(globals.BASE + globals.JSON, headers).subscribe(
+    return this.http.get(globals.BASE + globals.JSON, { headers: <HttpHeaders> headers }).subscribe(
       (r: any) => {
           r.json.forEach((j) => {
             j.created = j.created ? new Date(j.created.replace(/-/g, '/')) : null;
@@ -168,7 +188,7 @@ export class BackendService {
   searchTeam(q: string, next) {
     const headers = globals.AUTH_HEADERS;
 
-    return this.http.get(globals.BASE + globals.TEAM, headers).subscribe(
+    return this.http.get(globals.BASE + globals.TEAM, { headers: <HttpHeaders> headers }).subscribe(
       (r: any) => {
         console.log(r);
         r.team.forEach((j) => {
@@ -176,6 +196,23 @@ export class BackendService {
           j.updated = j.updated ? new Date(j.updated.replace(/-/g, '/')) : null;
         });
         next(null, r.team);
+      },
+      (e) => {
+        this.openSnackBar(e.error.message, 2000);
+        next(e, null);
+      });
+  }
+
+  addTeamMember(tid, users, next) {
+    const headers = globals.AUTH_HEADERS;
+
+    const details = {
+      users: users
+    };
+
+    return this.http.post(globals.BASE + globals.TEAM + '/' + tid + '/access', details, { headers: <HttpHeaders> headers }).subscribe(
+      (r: any) => {
+        next(null, r);
       },
       (e) => {
         this.openSnackBar(e.error.message, 2000);
