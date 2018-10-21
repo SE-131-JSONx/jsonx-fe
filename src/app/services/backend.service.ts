@@ -203,6 +203,26 @@ export class BackendService {
       });
   }
 
+  searchTeamMember(q: string, tid: number, next) {
+    const headers = globals.AUTH_HEADERS;
+
+    const params = new HttpParams().set('q', q);
+
+    return this.http.get(globals.BASE + globals.TEAM + '/' + tid + '/members', {headers: <HttpHeaders>headers, params: <HttpParams>params}).subscribe(
+      (r: any) => {
+        console.log(r);
+        r.user.forEach((j) => {
+          j.created = j.created ? new Date(j.created.replace(/-/g, '/')) : null;
+          j.updated = j.updated ? new Date(j.updated.replace(/-/g, '/')) : null;
+        });
+        next(null, r.user);
+      },
+      (e) => {
+        this.openSnackBar(e.error.message, 2000);
+        next(e, null);
+      });
+  }
+
   addTeamMember(tid, users, next) {
     const headers = globals.AUTH_HEADERS;
 
@@ -213,6 +233,27 @@ export class BackendService {
     return this.http.post(globals.BASE + globals.TEAM + '/' + tid + '/access', details, { headers: <HttpHeaders> headers }).subscribe(
       (r: any) => {
         this.openSnackBar('Added team members.', 3000);
+        next(null, r);
+      },
+      (e) => {
+        this.openSnackBar(e.error.message, 2000);
+        next(e, null);
+      });
+  }
+
+  removeTeamMember(tid, users, next) {
+    const headers = globals.AUTH_HEADERS;
+
+    const details = {
+      users: users
+    };
+
+    this.http.request('DELETE', globals.BASE + globals.TEAM + '/' + tid + '/access', {
+      headers: <HttpHeaders> headers,
+      body: details
+    }).subscribe(
+      (r: any) => {
+        this.openSnackBar('Removed team members.', 3000);
         next(null, r);
       },
       (e) => {

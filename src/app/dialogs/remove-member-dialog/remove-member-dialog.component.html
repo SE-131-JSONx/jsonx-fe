@@ -1,0 +1,41 @@
+<div class="container">
+
+  <h2 mat-dialog-title class="text-center">Remove Team Member</h2>
+  <p class="mb-0">Search and remove team members below.</p>
+  <div class="row">
+    <div class="col">
+
+      <form [formGroup]="searchUserForm" fxFlex fxLayout="column" fxLayoutAlign="center stretch" class="pt-2">
+        <mat-form-field>
+          <input matInput placeholder="User" (input)="onSearchChange($event.target.value)" formControlName="user">
+        </mat-form-field>
+      </form>
+    </div>
+  </div>
+
+  <div mat-dialog-content style="height: 285px; !important;">
+    <div class="row">
+      <div class="col">
+        <mat-selection-list #users>
+          <mat-list-option *ngFor="let user of userList" [value]="user">
+            <mat-icon mat-list-icon>user</mat-icon>
+            <h4 mat-line>{{ user.name + ' ' + user.surname }}</h4>
+            <p mat-line> {{ user.login + ' - ' + user.email }} </p>
+          </mat-list-option>
+        </mat-selection-list>
+      </div>
+    </div>
+  </div>
+
+  <mat-dialog-actions>
+    <div class="row m-0 w-100">
+      <div class="col-6 pl-0">
+        <button class="mat-raised-button w-100" (click)="cancel()">Cancel</button>
+      </div>
+      <div class="col-6 pr-0">
+        <button class="mat-raised-button mat-primary w-100" (click)="remove()" [disabled]="users.selectedOptions.selected.length === 0">{{ users.selectedOptions.selected.length > 0 ? 'Remove ' + users.selectedOptions.selected.length + (users.selectedOptions.selected.length === 1 ? ' user': ' users') : 'Remove' }}</button>
+      </div>
+    </div>
+  </mat-dialog-actions>
+
+</div>

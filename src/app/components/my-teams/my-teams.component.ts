@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { BackendService } from '../../services/backend.service';
 import {AddMemberDialogComponent} from '../../dialogs/add-member-dialog/add-member-dialog.component';
+import {RemoveMemberDialogComponent} from '../../dialogs/remove-member-dialog/remove-member-dialog.component';
 
 @Component({
   selector: 'app-my-teams',
@@ -37,6 +38,19 @@ export class MyTeamsComponent implements OnInit {
 
   addMember(team) {
     const dialogRef = this.dialog.open(AddMemberDialogComponent, {
+      width: '500px',
+      height: '550px',
+      data: team,
+    });
+    dialogRef.afterClosed().subscribe((r) => {
+      if (r) {
+        this.initializeDataSource();
+      }
+    });
+  }
+
+  removeMember(team) {
+    const dialogRef = this.dialog.open(RemoveMemberDialogComponent, {
       width: '500px',
       height: '550px',
       data: team,
