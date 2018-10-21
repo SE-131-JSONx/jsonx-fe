@@ -150,6 +150,10 @@ export class BackendService {
 
     return this.http.get(globals.BASE + globals.JSON, headers).subscribe(
       (r: any) => {
+          r.json.forEach((j) => {
+            j.created = j.created ? new Date(j.created.replace(/-/g, '/')) : null;
+            j.updated = j.updated ? new Date(j.updated.replace(/-/g, '/')) : null;
+          });
           next(null, r.json);
         },
       (e) => {
@@ -167,6 +171,10 @@ export class BackendService {
     return this.http.get(globals.BASE + globals.TEAM, headers).subscribe(
       (r: any) => {
         console.log(r);
+        r.team.forEach((j) => {
+          j.created = j.created ? new Date(j.created.replace(/-/g, '/')) : null;
+          j.updated = j.updated ? new Date(j.updated.replace(/-/g, '/')) : null;
+        });
         next(null, r.team);
       },
       (e) => {
