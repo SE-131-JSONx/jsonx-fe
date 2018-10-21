@@ -42,7 +42,7 @@ import {
   MatToolbarModule,
   MatTooltipModule, MatTreeModule
 } from '@angular/material';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { LoginComponent } from './components/login/login.component';
@@ -59,6 +59,8 @@ import { AccessLevelPipe } from './pipes/access-level.pipe';
 import { DeleteJsonDialogComponent } from './dialogs/delete-json-dialog/delete-json-dialog.component';
 import { SaveJsonDialogComponent } from './dialogs/save-json-dialog/save-json-dialog.component';
 import { UpdateJsonDialogComponent } from './dialogs/update-json-dialog/update-json-dialog.component';
+import {AuthInterceptorService} from './services/auth-interceptor.service';
+import {BackendService} from './services/backend.service';
 
 @NgModule({
   declarations: [
@@ -129,7 +131,14 @@ import { UpdateJsonDialogComponent } from './dialogs/update-json-dialog/update-j
     NgxJsonViewerModule,
     MonacoEditorModule.forRoot(),
   ],
-  providers: [],
+  providers: [
+    BackendService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

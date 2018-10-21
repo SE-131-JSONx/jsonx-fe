@@ -37,10 +37,8 @@ export class UpdateJsonDialogComponent implements OnInit {
     };
 
     this.backendService.updateJson(this.data.id, details, (error, r) => {
-      console.log(error);
-      console.log(r);
       this.loadingService.stop();
-      this.dialogRef.close(true);
+      this.dialogRef.close(r);
     });
   }
 }

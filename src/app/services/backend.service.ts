@@ -110,6 +110,7 @@ export class BackendService {
 
     return this.http.put(globals.BASE + globals.JSON + '/' + jid, details, headers).subscribe(
       (r: any) => {
+        this.openSnackBar('JSON successfully updated', 3000);
         next(null, r);
       },
       (e) => {
@@ -178,6 +179,7 @@ export class BackendService {
    * Utilities
    * */
   openSnackBar(message: string, duration: number) {
+    this.snackBar.dismiss();
     this.snackBar.open(message, null, {
       duration: duration || 2000,
     });
