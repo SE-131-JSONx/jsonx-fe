@@ -212,6 +212,7 @@ export class BackendService {
 
     return this.http.post(globals.BASE + globals.TEAM + '/' + tid + '/access', details, { headers: <HttpHeaders> headers }).subscribe(
       (r: any) => {
+        this.openSnackBar('Added team members.', 3000);
         next(null, r);
       },
       (e) => {

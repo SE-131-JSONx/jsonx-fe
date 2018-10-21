@@ -63,7 +63,6 @@ export class MyTeamsComponent implements OnInit {
 
   initializeDataSource() {
     this.backendService.searchTeam(null, (e, r) => {
-      console.log(r);
       this.dataSource = new MatTableDataSource(r);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
