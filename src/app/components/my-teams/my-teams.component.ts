@@ -3,6 +3,7 @@ import { MatDialog, MatPaginator, MatSort, MatTableDataSource } from '@angular/m
 import { BackendService } from '../../services/backend.service';
 import {AddMemberDialogComponent} from '../../dialogs/add-member-dialog/add-member-dialog.component';
 import {RemoveMemberDialogComponent} from '../../dialogs/remove-member-dialog/remove-member-dialog.component';
+import {EditTeamDialogComponent} from '../../dialogs/edit-team-dialog/edit-team-dialog.component';
 
 @Component({
   selector: 'app-my-teams',
@@ -23,17 +24,17 @@ export class MyTeamsComponent implements OnInit {
     this.initializeDataSource();
   }
 
-  viewTeam(team): void {
-    /*const dialogRef = this.dialog.open(EditJsonDialogComponent, {
+  editTeam(team): void {
+    const dialogRef = this.dialog.open(EditTeamDialogComponent, {
       width: '500px',
       height: '550px',
-      json: json,
+      data: team,
     });
     dialogRef.afterClosed().subscribe((edited) => {
       if (edited) {
         this.initializeDataSource();
       }
-    });*/
+    });
   }
 
   addMember(team) {

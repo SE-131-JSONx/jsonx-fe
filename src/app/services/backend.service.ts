@@ -10,7 +10,6 @@ import { UserDetails } from '../util/interfaces';
 })
 export class BackendService {
 
-
   constructor(private http: HttpClient,
               private router: Router,
               private snackBar: MatSnackBar) { }
@@ -185,6 +184,23 @@ export class BackendService {
   /**
    * TEAM
    * */
+  updateTeamDetails(tid: any, name: string, next) {
+    const headers = globals.AUTH_HEADERS;
+
+    const details = {
+      'name': name
+    };
+
+    return this.http.put(globals.BASE + globals.TEAM + '/' + tid, details, { headers: <HttpHeaders> headers }).subscribe(
+      (r: any) => {
+        next(null, r);
+      },
+      (error: any) => {
+        this.openSnackBar(error.error.message, 2000);
+        next(error, null);
+      });
+  }
+
   searchTeam(q: string, next) {
     const headers = globals.AUTH_HEADERS;
 

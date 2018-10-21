@@ -63,6 +63,7 @@ import {AuthInterceptorService} from './services/auth-interceptor.service';
 import {BackendService} from './services/backend.service';
 import { AddMemberDialogComponent } from './dialogs/add-member-dialog/add-member-dialog.component';
 import { RemoveMemberDialogComponent } from './dialogs/remove-member-dialog/remove-member-dialog.component';
+import { EditTeamDialogComponent } from './dialogs/edit-team-dialog/edit-team-dialog.component';
 
 @NgModule({
   declarations: [
@@ -81,7 +82,8 @@ import { RemoveMemberDialogComponent } from './dialogs/remove-member-dialog/remo
     SaveJsonDialogComponent,
     UpdateJsonDialogComponent,
     AddMemberDialogComponent,
-    RemoveMemberDialogComponent
+    RemoveMemberDialogComponent,
+    EditTeamDialogComponent
   ],
   entryComponents: [
     EditUserDialogComponent,
@@ -89,7 +91,8 @@ import { RemoveMemberDialogComponent } from './dialogs/remove-member-dialog/remo
     SaveJsonDialogComponent,
     UpdateJsonDialogComponent,
     AddMemberDialogComponent,
-    RemoveMemberDialogComponent
+    RemoveMemberDialogComponent,
+    EditTeamDialogComponent
   ],
   imports: [
     BrowserModule,
