@@ -4,6 +4,8 @@ import { BackendService } from '../../services/backend.service';
 import {AddMemberDialogComponent} from '../../dialogs/add-member-dialog/add-member-dialog.component';
 import {RemoveMemberDialogComponent} from '../../dialogs/remove-member-dialog/remove-member-dialog.component';
 import {EditTeamDialogComponent} from '../../dialogs/edit-team-dialog/edit-team-dialog.component';
+import {CreateTeamDialogComponent} from '../../dialogs/create-team-dialog/create-team-dialog.component';
+import {DeleteTeamDialogComponent} from '../../dialogs/delete-team-dialog/delete-team-dialog.component';
 
 @Component({
   selector: 'app-my-teams',
@@ -22,6 +24,18 @@ export class MyTeamsComponent implements OnInit {
 
   ngOnInit() {
     this.initializeDataSource();
+  }
+
+  saveTeam(): void {
+    const dialogRef = this.dialog.open(CreateTeamDialogComponent, {
+      width: '500px',
+      height: '550px',
+    });
+    dialogRef.afterClosed().subscribe((saved) => {
+      if (saved) {
+        this.initializeDataSource();
+      }
+    });
   }
 
   editTeam(team): void {
@@ -64,16 +78,16 @@ export class MyTeamsComponent implements OnInit {
   }
 
   openDeleteTeamDialog(team) {
-    /*const dialogRef = this.dialog.open(DeleteJsonDialogComponent, {
+    const dialogRef = this.dialog.open(DeleteTeamDialogComponent, {
       width: '500px',
       height: '550px',
-      json: organization,
+      data: team,
     });
     dialogRef.afterClosed().subscribe((deleted) => {
       if (deleted) {
         this.initializeDataSource();
       }
-    });*/
+    });
   }
 
   initializeDataSource() {

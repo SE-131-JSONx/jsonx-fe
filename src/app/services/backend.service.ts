@@ -184,6 +184,19 @@ export class BackendService {
   /**
    * TEAM
    * */
+  saveTeam(details, next) {
+    const headers = globals.AUTH_HEADERS;
+
+    return this.http.post(globals.BASE + globals.TEAM, details, { headers: <HttpHeaders> headers }).subscribe(
+      (r: any) => {
+        next(null, r);
+      },
+      (e) => {
+        this.openSnackBar(e.error.message, 2000);
+        next(e, null);
+      });
+  }
+
   updateTeamDetails(tid: any, name: string, next) {
     const headers = globals.AUTH_HEADERS;
 
@@ -198,6 +211,19 @@ export class BackendService {
       (error: any) => {
         this.openSnackBar(error.error.message, 2000);
         next(error, null);
+      });
+  }
+
+  deleteTeam(tid: string, next) {
+    const headers = globals.AUTH_HEADERS;
+
+    return this.http.delete(globals.BASE + globals.TEAM + '/' + tid, { headers: <HttpHeaders> headers }).subscribe(
+      (r: any) => {
+        next(null, r);
+      },
+      (e) => {
+        this.openSnackBar(e.error.message, 2000);
+        next(e, null);
       });
   }
 

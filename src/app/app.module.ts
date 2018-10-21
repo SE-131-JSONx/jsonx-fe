@@ -64,6 +64,8 @@ import {BackendService} from './services/backend.service';
 import { AddMemberDialogComponent } from './dialogs/add-member-dialog/add-member-dialog.component';
 import { RemoveMemberDialogComponent } from './dialogs/remove-member-dialog/remove-member-dialog.component';
 import { EditTeamDialogComponent } from './dialogs/edit-team-dialog/edit-team-dialog.component';
+import { CreateTeamDialogComponent } from './dialogs/create-team-dialog/create-team-dialog.component';
+import { DeleteTeamDialogComponent } from './dialogs/delete-team-dialog/delete-team-dialog.component';
 
 @NgModule({
   declarations: [
@@ -83,7 +85,9 @@ import { EditTeamDialogComponent } from './dialogs/edit-team-dialog/edit-team-di
     UpdateJsonDialogComponent,
     AddMemberDialogComponent,
     RemoveMemberDialogComponent,
-    EditTeamDialogComponent
+    EditTeamDialogComponent,
+    CreateTeamDialogComponent,
+    DeleteTeamDialogComponent
   ],
   entryComponents: [
     EditUserDialogComponent,
@@ -92,7 +96,9 @@ import { EditTeamDialogComponent } from './dialogs/edit-team-dialog/edit-team-di
     UpdateJsonDialogComponent,
     AddMemberDialogComponent,
     RemoveMemberDialogComponent,
-    EditTeamDialogComponent
+    EditTeamDialogComponent,
+    CreateTeamDialogComponent,
+    DeleteTeamDialogComponent
   ],
   imports: [
     BrowserModule,

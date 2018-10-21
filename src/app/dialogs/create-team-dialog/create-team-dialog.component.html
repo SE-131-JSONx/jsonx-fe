@@ -1,0 +1,32 @@
+<div class="container">
+
+  <h2 mat-dialog-title class="text-center">Create Team</h2>
+  <div mat-dialog-content style="max-height: 400px;">
+    <div class="row">
+      <div class="col">
+
+        <form [formGroup]="saveTeamForm" fxFlex fxLayout="column" fxLayoutAlign="center stretch" class="pt-2">
+          <mat-form-field>
+            <input matInput placeholder="First name" formControlName="name">
+            <mat-error *ngIf="saveTeamForm.controls['name'].hasError('required')">
+              Team name is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+  <mat-dialog-actions>
+    <div class="row m-0 w-100">
+      <div class="col-6 pl-0">
+        <button class="mat-raised-button w-100" (click)="cancel()">Cancel</button>
+      </div>
+      <div class="col-6 pr-0">
+        <button class="mat-raised-button mat-primary w-100" (click)="save()" [disabled]="saveTeamForm.invalid">Save</button>
+      </div>
+    </div>
+  </mat-dialog-actions>
+
+</div>

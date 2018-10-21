@@ -3,7 +3,11 @@
     <mat-card-subtitle>View and manage teams you are a part of.</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content class="mat-elevation-z1 overflow-x-auto">
-    <mat-toolbar class="mat-accent text-white">My Teams</mat-toolbar>
+    <mat-toolbar class="mat-accent text-white">My Teams
+      <button mat-raised-button class="mx-2" color="primary" (click)="saveTeam()">
+        <mat-icon>add</mat-icon>Create Team
+      </button>
+    </mat-toolbar>
 
     <mat-form-field class="px-3 pt-2 w-100">
       <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search">
