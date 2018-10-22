@@ -36,7 +36,6 @@ export class BackendService {
         next(null, r);
       },
       (error: any) => {
-        console.log(error);
         this.openSnackBar(error.error.message, 2000);
         next(error, null);
       });
@@ -106,9 +105,8 @@ export class BackendService {
 
     const params = new HttpParams().set('q', q);
 
-    return this.http.get(globals.BASE + globals.USER, {headers: <HttpHeaders>headers, params: <HttpParams>params}).subscribe(
+    this.http.get(globals.BASE + globals.USER, {headers: <HttpHeaders>headers, params: <HttpParams>params}).subscribe(
       (r: any) => {
-        console.log(r);
         r.user.forEach((j) => {
           j.created = j.created ? new Date(j.created.replace(/-/g, '/')) : null;
           j.updated = j.updated ? new Date(j.updated.replace(/-/g, '/')) : null;
@@ -143,6 +141,7 @@ export class BackendService {
 
     return this.http.post(globals.BASE + globals.JSON + '/save', details, { headers: <HttpHeaders> headers }).subscribe(
       (r: any) => {
+        this.openSnackBar('JSON saved.', 3000);
         next(null, r);
       },
       (e) => {
@@ -156,6 +155,7 @@ export class BackendService {
 
     return this.http.delete(globals.BASE + globals.JSON + '/' + jid, { headers: <HttpHeaders> headers }).subscribe(
       (r: any) => {
+        this.openSnackBar('JSON deleted.', 3000);
         next(null, r);
       },
       (e) => {
@@ -189,7 +189,6 @@ export class BackendService {
     return this.http.get(globals.BASE + globals.JSON + '/' + jid + '/group',
       {headers: <HttpHeaders>headers, params: <HttpParams>params}).subscribe(
       (r: any) => {
-        console.log(r);
         r.user.forEach((j) => {
           j.created = j.created ? new Date(j.created.replace(/-/g, '/')) : null;
           j.updated = j.updated ? new Date(j.updated.replace(/-/g, '/')) : null;
@@ -207,6 +206,7 @@ export class BackendService {
 
     return this.http.post(globals.BASE + globals.JSON + '/' + jid + '/group', details, { headers: <HttpHeaders> headers }).subscribe(
       (r: any) => {
+        this.openSnackBar('JSON shared.', 3000);
         next(null, r);
       },
       (e) => {
@@ -240,6 +240,7 @@ export class BackendService {
 
     return this.http.post(globals.BASE + globals.TEAM, details, { headers: <HttpHeaders> headers }).subscribe(
       (r: any) => {
+        this.openSnackBar('Team created.', 3000);
         next(null, r);
       },
       (e) => {
@@ -257,6 +258,7 @@ export class BackendService {
 
     return this.http.put(globals.BASE + globals.TEAM + '/' + tid, details, { headers: <HttpHeaders> headers }).subscribe(
       (r: any) => {
+        this.openSnackBar('Team updated.', 3000);
         next(null, r);
       },
       (error: any) => {
@@ -270,6 +272,7 @@ export class BackendService {
 
     return this.http.delete(globals.BASE + globals.TEAM + '/' + tid, { headers: <HttpHeaders> headers }).subscribe(
       (r: any) => {
+        this.openSnackBar('Team deleted.', 3000);
         next(null, r);
       },
       (e) => {
@@ -283,7 +286,6 @@ export class BackendService {
 
     return this.http.get(globals.BASE + globals.TEAM, { headers: <HttpHeaders> headers }).subscribe(
       (r: any) => {
-        console.log(r);
         r.team.forEach((j) => {
           j.created = j.created ? new Date(j.created.replace(/-/g, '/')) : null;
           j.updated = j.updated ? new Date(j.updated.replace(/-/g, '/')) : null;
@@ -301,10 +303,9 @@ export class BackendService {
 
     const params = new HttpParams().set('q', q);
 
-    return this.http.get(globals.BASE + globals.TEAM + '/' + tid + '/members',
+    this.http.get(globals.BASE + globals.TEAM + '/' + tid + '/members',
       {headers: <HttpHeaders>headers, params: <HttpParams>params}).subscribe(
       (r: any) => {
-        console.log(r);
         r.user.forEach((j) => {
           j.created = j.created ? new Date(j.created.replace(/-/g, '/')) : null;
           j.updated = j.updated ? new Date(j.updated.replace(/-/g, '/')) : null;
