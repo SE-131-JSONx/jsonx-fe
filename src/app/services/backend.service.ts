@@ -181,6 +181,22 @@ export class BackendService {
       });
   }
 
+  shareJson(jid, details, next) {
+    const headers = globals.AUTH_HEADERS;
+
+    return this.http.post(globals.BASE + globals.JSON + '/' + jid + '/group', details, { headers: <HttpHeaders> headers }).subscribe(
+      (r: any) => {
+        console.log(r);
+        this.openSnackBar('Access has been granted for JSON.', 3000);
+        next(null, r);
+      },
+      (e) => {
+        console.log(e);
+        this.openSnackBar(e.error.message, 2000);
+        next(e, null);
+      });
+  }
+
   /**
    * TEAM
    * */
@@ -250,7 +266,8 @@ export class BackendService {
 
     const params = new HttpParams().set('q', q);
 
-    return this.http.get(globals.BASE + globals.TEAM + '/' + tid + '/members', {headers: <HttpHeaders>headers, params: <HttpParams>params}).subscribe(
+    return this.http.get(globals.BASE + globals.TEAM + '/' + tid + '/members',
+      {headers: <HttpHeaders>headers, params: <HttpParams>params}).subscribe(
       (r: any) => {
         console.log(r);
         r.user.forEach((j) => {
@@ -265,7 +282,7 @@ export class BackendService {
       });
   }
 
-  addTeamMember(tid, users, next) {
+  addTeamMembers(tid, users, next) {
     const headers = globals.AUTH_HEADERS;
 
     const details = {

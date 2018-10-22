@@ -20,6 +20,10 @@
                       aria-label="View Json">remove_red_eye
             </mat-icon>
           </a>
+          <a (click)="openShareJsonDialog(element)">
+            <mat-icon class="clickable color-theme-pink" matTooltip="Share Json"
+                      aria-label="Share Json">share</mat-icon>
+          </a>
           <a (click)="openDeleteJsonDialog(element)">
             <mat-icon class="clickable color-theme-pink" matTooltip="Delete Json"
                       aria-label="Delete Json">delete</mat-icon>

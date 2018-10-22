@@ -46,7 +46,7 @@ export class AddMemberDialogComponent implements OnInit {
     this.loadingService.loading = true;
     const users = this.users.selectedOptions.selected.map(item => item.value.id);
 
-    this.backendService.addTeamMember(this.data.id, users, (e, r) => {
+    this.backendService.addTeamMembers(this.data.id, users, (e, r) => {
       this.loadingService.stop();
       this.dialogRef.close(r);
     });

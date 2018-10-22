@@ -5,6 +5,7 @@ import {DeleteJsonDialogComponent} from '../../dialogs/delete-json-dialog/delete
 import {DataService} from '../../services/data.service';
 import {JsonDetails} from '../../util/interfaces';
 import {Router} from '@angular/router';
+import {ShareJsonDialogComponent} from '../../dialogs/share-json-dialog/share-json-dialog.component';
 
 @Component({
   selector: 'app-my-json',
@@ -41,6 +42,19 @@ export class MyJsonComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe((deleted) => {
       if (deleted) {
+        this.initializeDataSource();
+      }
+    });
+  }
+
+  openShareJsonDialog(json) {
+    const dialogRef = this.dialog.open(ShareJsonDialogComponent, {
+    width: '500px',
+    height: '550px',
+    data: json,
+  });
+    dialogRef.afterClosed().subscribe((shared) => {
+      if (shared) {
         this.initializeDataSource();
       }
     });
