@@ -4,19 +4,18 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {BackendService} from '../../services/backend.service';
 import {LoadingService} from '../../services/loading.service';
 
-
 @Component({
-  selector: 'app-share-json-dialog',
-  templateUrl: './share-json-dialog.component.html',
-  styleUrls: ['./share-json-dialog.component.scss']
+  selector: 'app-unshare-json-dialog',
+  templateUrl: './unshare-json-dialog.component.html',
+  styleUrls: ['./unshare-json-dialog.component.scss']
 })
-export class ShareJsonDialogComponent implements OnInit {
+export class UnshareJsonDialogComponent implements OnInit {
   @ViewChild('results') results;
   resultsList: any;
   searchForm: FormGroup;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,
-              private dialogRef: MatDialogRef<ShareJsonDialogComponent>,
+              private dialogRef: MatDialogRef<UnshareJsonDialogComponent>,
               private _formBuilder: FormBuilder,
               public backendService: BackendService,
               public loadingService: LoadingService) {
@@ -26,24 +25,27 @@ export class ShareJsonDialogComponent implements OnInit {
     this.searchForm = this._formBuilder.group({
       search: ['', []]
     });
+
+    this.backendService.searchJsonAccess(this.data.id, '', (e, r) => {
+      this.resultsList = r;
+    });
   }
 
   onSearchChange(q) {
     this.resultsList = [];
     if (q) {
-      this.backendService.searchUser(q, (e, r) => {
-        this.resultsList = Array.from(new Set(this.resultsList.concat(r)));
+      this.backendService.searchJsonAccess(this.data.id, q, (e, r) => {
+        this.resultsList = r;
       });
-      this.backendService.searchTeam(q, (e, r) => {
-        this.resultsList = Array.from(new Set(this.resultsList.concat(r)));
-      });
+    } else {
+      this.resultsList = [];
     }
   }
 
   cancel(): void {
     this.dialogRef.close();
   }
-  add() {
+  remove() {
     this.loadingService.loading = true;
     const teams = [];
     const users = [];
@@ -60,7 +62,7 @@ export class ShareJsonDialogComponent implements OnInit {
       teams: teams
     };
 
-    this.backendService.shareJson(this.data.id, details, (e, r) => {
+    this.backendService.unshareJson(this.data.id, details, (e, r) => {
       this.loadingService.stop();
       this.dialogRef.close(r);
     });

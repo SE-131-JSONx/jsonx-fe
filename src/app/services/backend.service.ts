@@ -181,17 +181,52 @@ export class BackendService {
       });
   }
 
+  searchJsonAccess(jid: number, q: string, next) {
+    const headers = globals.AUTH_HEADERS;
+
+    const params = new HttpParams().set('q', q);
+
+    return this.http.get(globals.BASE + globals.JSON + '/' + jid + '/group',
+      {headers: <HttpHeaders>headers, params: <HttpParams>params}).subscribe(
+      (r: any) => {
+        console.log(r);
+        r.user.forEach((j) => {
+          j.created = j.created ? new Date(j.created.replace(/-/g, '/')) : null;
+          j.updated = j.updated ? new Date(j.updated.replace(/-/g, '/')) : null;
+        });
+        next(null, r.user);
+      },
+      (e) => {
+        this.openSnackBar(e.error.message, 2000);
+        next(e, null);
+      });
+  }
+
   shareJson(jid, details, next) {
     const headers = globals.AUTH_HEADERS;
 
     return this.http.post(globals.BASE + globals.JSON + '/' + jid + '/group', details, { headers: <HttpHeaders> headers }).subscribe(
       (r: any) => {
-        console.log(r);
-        this.openSnackBar('Access has been granted for JSON.', 3000);
         next(null, r);
       },
       (e) => {
-        console.log(e);
+        this.openSnackBar(e.error.message, 2000);
+        next(e, null);
+      });
+  }
+
+  unshareJson(jid, details, next) {
+    const headers = globals.AUTH_HEADERS;
+
+    this.http.request('DELETE', globals.BASE + globals.JSON + '/' + jid + '/group', {
+      headers: <HttpHeaders> headers,
+      body: details
+    }).subscribe(
+      (r: any) => {
+        this.openSnackBar('Unshared JSON.', 3000);
+        next(null, r);
+      },
+      (e) => {
         this.openSnackBar(e.error.message, 2000);
         next(e, null);
       });

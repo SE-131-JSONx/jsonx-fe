@@ -67,6 +67,7 @@ import { EditTeamDialogComponent } from './dialogs/edit-team-dialog/edit-team-di
 import { CreateTeamDialogComponent } from './dialogs/create-team-dialog/create-team-dialog.component';
 import { DeleteTeamDialogComponent } from './dialogs/delete-team-dialog/delete-team-dialog.component';
 import { ShareJsonDialogComponent } from './dialogs/share-json-dialog/share-json-dialog.component';
+import { UnshareJsonDialogComponent } from './dialogs/unshare-json-dialog/unshare-json-dialog.component';
 
 @NgModule({
   declarations: [
@@ -89,7 +90,8 @@ import { ShareJsonDialogComponent } from './dialogs/share-json-dialog/share-json
     EditTeamDialogComponent,
     CreateTeamDialogComponent,
     DeleteTeamDialogComponent,
-    ShareJsonDialogComponent
+    ShareJsonDialogComponent,
+    UnshareJsonDialogComponent
   ],
   entryComponents: [
     EditUserDialogComponent,
@@ -101,7 +103,8 @@ import { ShareJsonDialogComponent } from './dialogs/share-json-dialog/share-json
     EditTeamDialogComponent,
     CreateTeamDialogComponent,
     DeleteTeamDialogComponent,
-    ShareJsonDialogComponent
+    ShareJsonDialogComponent,
+    UnshareJsonDialogComponent
   ],
   imports: [
     BrowserModule,
