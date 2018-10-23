@@ -39,7 +39,7 @@
       </div>
     </mat-toolbar-row>
   </mat-toolbar>
-  <mat-sidenav-container class="bg-transparent">
+  <mat-sidenav-container class="bg-transparent mh-90">
     <mat-sidenav #sidenav>
       <mat-nav-list>
         <button mat-button class="w-100" [routerLink]="['/dashboard']" *ngIf="authService.isAuthenticated" (click)="sidenav.toggle()">

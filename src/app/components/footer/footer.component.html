@@ -1,49 +1,84 @@
 <footer>
   <div class="container p-5">
     <div class="row">
-      <div class="col">
 
-        <div class="row">
+      <div class="col">
+        <div class="row text-center">
+
           <div class="col-12">
             <h5 class="text-white">Resources</h5>
           </div>
-          <div class="col-12">
-            <a href="#">Dashboard</a>
-          </div>
-          <div class="col-12">
-            <a href="#">Dashboard</a>
-          </div>
-          <div class="col-12">
-            <a href="#">Dashboard</a>
-          </div>
-        </div>
 
+          <div class="col-12">
+            <button class="text-white text-left w-25" mat-button [routerLink]="['/dashboard']">
+              <span>Dashboard</span>
+            </button>
+          </div>
+
+          <div class="col-12">
+            <button class="text-white text-left w-25" mat-button [routerLink]="['/explorer']">
+              <span>Explorer</span>
+            </button>
+          </div>
+
+          <div class="col-12">
+            <button class="text-white text-left w-25" mat-button [routerLink]="['/json']">
+              <span>My JSONs</span>
+            </button>
+          </div>
+
+          <div class="col-12">
+            <button class="text-white text-left w-25" mat-button [routerLink]="['/team']">
+              <span>My Teams</span>
+            </button>
+          </div>
+
+          <div class="col-12">
+            <button class="text-white text-left w-25" mat-button [routerLink]="['/myprofile']">
+              <span>My Profile</span>
+            </button>
+          </div>
+
+        </div>
       </div>
 
       <div class="col">
-        <div class="row">
+        <div class="row text-center">
+
           <div class="col-12">
-            <h5 class="text-white">Resources</h5>
+            <h5 class="text-white">About</h5>
           </div>
+
           <div class="col-12">
-            <a href="#">Dashboard</a>
+            <button class="text-white text-left" mat-button (click)="openGithub()">
+              <span>Github</span>
+            </button>
           </div>
+
           <div class="col-12">
-            <a href="#">Dashboard</a>
+            <button class="text-white text-left" mat-button [routerLink]="['/explorer']"
+                    matTooltip="Coming soon!">
+              <span>About Us</span>
+            </button>
           </div>
+
           <div class="col-12">
-            <a href="#">Dashboard</a>
+            <button class="text-white text-left" mat-button [routerLink]="['/json']"
+                    matTooltip="Coming soon!">
+              <span>Careers</span>
+            </button>
           </div>
+
         </div>
       </div>
 
     </div>
-    <div class="license">
-      <p>
-        Powered by Google ©2010-2018. Code licensed under an MIT-style License. Documentation licensed under CC BY 4.0.
+    <div class="container pt-5 text-center">
+      <p class="text-white">
+        JSONx gives developers the tools they need to quickly test and view JSON.
       </p>
-      <p>
-        Version 6.1.10-build.50301+sha.3b4d9dc.
+      <p class="text-white">
+        Version 0.1
       </p>
     </div>
   </div>
