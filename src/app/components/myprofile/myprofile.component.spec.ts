@@ -48,6 +48,10 @@ import {DashboardComponent} from '../dashboard/dashboard.component';
 import {LoginComponent} from '../login/login.component';
 import {SignupComponent} from '../signup/signup.component';
 import {APP_BASE_HREF} from '@angular/common';
+import {EditUserDialogComponent} from '../../dialogs/edit-user-dialog/edit-user-dialog.component';
+import {ExplorerComponent} from '../explorer/explorer.component';
+import {NgxJsonViewerModule} from 'ngx-json-viewer';
+import {MonacoEditorModule} from 'ngx-monaco-editor';
 
 describe('MyprofileComponent', () => {
   let component: MyprofileComponent;
@@ -61,6 +65,8 @@ describe('MyprofileComponent', () => {
         LoginComponent,
         SignupComponent,
         MyprofileComponent,
+        ExplorerComponent,
+        EditUserDialogComponent
       ],
       imports: [
         BrowserModule,
@@ -104,7 +110,9 @@ describe('MyprofileComponent', () => {
         HttpClientModule,
         ReactiveFormsModule,
         FormsModule,
-        FlexLayoutModule
+        FlexLayoutModule,
+        NgxJsonViewerModule,
+        MonacoEditorModule.forRoot()
       ],
       providers: [{provide: APP_BASE_HREF, useValue: '/'}]
     })

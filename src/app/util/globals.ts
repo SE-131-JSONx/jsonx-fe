@@ -11,10 +11,16 @@ export const globals = {
 
   // STORAGE
   STORAGE_KEY: 'Authorization',
+  get JWT() {
+    return localStorage.getItem(this.STORAGE_KEY);
+  },
 
   // ENDPOINTS
   LOGIN: '/login',
-  GET_USER_DETAILS: '/user/',
+  USER: '/user',
+  JSON: '/json',
+  TEAM: '/team',
+
 
   get HEADERS() {
     return {
@@ -22,11 +28,9 @@ export const globals = {
     };
   },
   get AUTH_HEADERS() {
-    return {
-      headers: new HttpHeaders({'Content-Type': 'application/json',
+    return new HttpHeaders({'Content-Type': 'application/json',
         'Cache-Control': 'no-cache',
         'Authorization': localStorage.getItem(this.STORAGE_KEY),
-        'Access-Control-Allow-Origin': '*'})
-    };
+        'Access-Control-Allow-Origin': '*'});
   },
 };

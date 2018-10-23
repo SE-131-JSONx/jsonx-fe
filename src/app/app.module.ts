@@ -42,13 +42,34 @@ import {
   MatToolbarModule,
   MatTooltipModule, MatTreeModule
 } from '@angular/material';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { MyprofileComponent } from './components/myprofile/myprofile.component';
-import {FooterComponent} from './components/footer/footer.component';
+import { EditUserDialogComponent } from './dialogs/edit-user-dialog/edit-user-dialog.component';
+import { ExplorerComponent } from './components/explorer/explorer.component';
+import { NgxJsonViewerModule } from 'ngx-json-viewer';
+import { MonacoEditorModule } from 'ngx-monaco-editor';
+import { MyJsonComponent } from './components/my-json/my-json.component';
+import { MyTeamsComponent } from './components/my-teams/my-teams.component';
+import { TruncatePipe } from './pipes/truncate.pipe';
+import { AccessLevelPipe } from './pipes/access-level.pipe';
+import { DeleteJsonDialogComponent } from './dialogs/delete-json-dialog/delete-json-dialog.component';
+import { SaveJsonDialogComponent } from './dialogs/save-json-dialog/save-json-dialog.component';
+import { UpdateJsonDialogComponent } from './dialogs/update-json-dialog/update-json-dialog.component';
+import { AuthInterceptorService } from './services/auth-interceptor.service';
+import { BackendService } from './services/backend.service';
+import { AddMemberDialogComponent } from './dialogs/add-member-dialog/add-member-dialog.component';
+import { RemoveMemberDialogComponent } from './dialogs/remove-member-dialog/remove-member-dialog.component';
+import { EditTeamDialogComponent } from './dialogs/edit-team-dialog/edit-team-dialog.component';
+import { CreateTeamDialogComponent } from './dialogs/create-team-dialog/create-team-dialog.component';
+import { DeleteTeamDialogComponent } from './dialogs/delete-team-dialog/delete-team-dialog.component';
+import { ShareJsonDialogComponent } from './dialogs/share-json-dialog/share-json-dialog.component';
+import { UnshareJsonDialogComponent } from './dialogs/unshare-json-dialog/unshare-json-dialog.component';
+import { FooterComponent } from './components/footer/footer.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,7 +77,36 @@ import {FooterComponent} from './components/footer/footer.component';
     LoginComponent,
     SignupComponent,
     MyprofileComponent,
-    FooterComponent
+    FooterComponent,
+    EditUserDialogComponent,
+    ExplorerComponent,
+    MyJsonComponent,
+    MyTeamsComponent,
+    TruncatePipe,
+    AccessLevelPipe,
+    DeleteJsonDialogComponent,
+    SaveJsonDialogComponent,
+    UpdateJsonDialogComponent,
+    AddMemberDialogComponent,
+    RemoveMemberDialogComponent,
+    EditTeamDialogComponent,
+    CreateTeamDialogComponent,
+    DeleteTeamDialogComponent,
+    ShareJsonDialogComponent,
+    UnshareJsonDialogComponent
+  ],
+  entryComponents: [
+    EditUserDialogComponent,
+    DeleteJsonDialogComponent,
+    SaveJsonDialogComponent,
+    UpdateJsonDialogComponent,
+    AddMemberDialogComponent,
+    RemoveMemberDialogComponent,
+    EditTeamDialogComponent,
+    CreateTeamDialogComponent,
+    DeleteTeamDialogComponent,
+    ShareJsonDialogComponent,
+    UnshareJsonDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -100,9 +150,18 @@ import {FooterComponent} from './components/footer/footer.component';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    NgxJsonViewerModule,
+    MonacoEditorModule.forRoot(),
   ],
-  providers: [],
+  providers: [
+    BackendService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

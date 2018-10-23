@@ -1,0 +1,41 @@
+<div class="container">
+
+  <h2 mat-dialog-title class="text-center">Unshare JSON</h2>
+  <p class="mb-0">Search users and teams below to remove access.</p>
+  <div class="row">
+    <div class="col">
+
+      <form [formGroup]="searchForm" fxFlex fxLayout="column" fxLayoutAlign="center stretch" class="pt-2">
+        <mat-form-field>
+          <input matInput placeholder="Team or user" (input)="onSearchChange($event.target.value)" formControlName="search">
+        </mat-form-field>
+      </form>
+    </div>
+  </div>
+
+  <div mat-dialog-content style="height: 285px; !important;">
+    <div class="row">
+      <div class="col">
+        <mat-selection-list #results>
+          <mat-list-option *ngFor="let result of resultsList" [value]="result">
+            <mat-icon mat-list-icon>{{ result.hasOwnProperty('access_level') ? 'supervised_user_circle' : 'account_circle' }}</mat-icon>
+            <h4 mat-line>{{ result.name + ( !result.hasOwnProperty('access_level') ? ' ' + result.surname : '') }}</h4>
+            <p mat-line> {{ result.hasOwnProperty('access_level') ? 'Team' : result.email }} </p>
+          </mat-list-option>
+        </mat-selection-list>
+      </div>
+    </div>
+  </div>
+
+  <mat-dialog-actions>
+    <div class="row m-0 w-100">
+      <div class="col-6 pl-0">
+        <button class="mat-raised-button w-100" (click)="cancel()">Cancel</button>
+      </div>
+      <div class="col-6 pr-0">
+        <button class="mat-raised-button mat-primary w-100" (click)="remove()" [disabled]="results.selectedOptions.selected.length === 0">Remove Access</button>
+      </div>
+    </div>
+  </mat-dialog-actions>
+
+</div>

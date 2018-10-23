@@ -1,12 +1,12 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DashboardComponent } from './dashboard.component';
-import {AppComponent} from '../../app.component';
-import {LoginComponent} from '../login/login.component';
-import {SignupComponent} from '../signup/signup.component';
-import {BrowserModule} from '@angular/platform-browser';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {AppRoutingModule} from '../../app-routing.module';
+import { AppComponent } from '../../app.component';
+import { LoginComponent } from '../login/login.component';
+import { SignupComponent } from '../signup/signup.component';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AppRoutingModule } from '../../app-routing.module';
 import {
   MatAutocompleteModule,
   MatBadgeModule,
@@ -43,11 +43,14 @@ import {
   MatToolbarModule,
   MatTooltipModule, MatTreeModule
 } from '@angular/material';
-import {HttpClientModule} from '@angular/common/http';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {FlexLayoutModule} from '@angular/flex-layout';
-import {APP_BASE_HREF} from '@angular/common';
-import {MyprofileComponent} from '../myprofile/myprofile.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { APP_BASE_HREF } from '@angular/common';
+import { MyprofileComponent } from '../myprofile/myprofile.component';
+import { ExplorerComponent } from '../explorer/explorer.component';
+import { MonacoEditorModule } from 'ngx-monaco-editor';
+import { NgxJsonViewerModule } from 'ngx-json-viewer';
 
 describe('DashboardComponent', () => {
   let component: DashboardComponent;
@@ -61,6 +64,7 @@ describe('DashboardComponent', () => {
         LoginComponent,
         SignupComponent,
         MyprofileComponent,
+        ExplorerComponent
       ],
       imports: [
         BrowserModule,
@@ -104,7 +108,9 @@ describe('DashboardComponent', () => {
         HttpClientModule,
         ReactiveFormsModule,
         FormsModule,
-        FlexLayoutModule
+        FlexLayoutModule,
+        NgxJsonViewerModule,
+        MonacoEditorModule.forRoot()
       ],
       providers: [{provide: APP_BASE_HREF, useValue: '/'}]
     }).compileComponents();

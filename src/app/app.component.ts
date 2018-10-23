@@ -14,12 +14,11 @@ export class AppComponent {
     '/login': 'login',
     '/signup': 'signup',
     '/dashboard': 'dashboard',
-    '/myprofile': 'my profile'
+    '/myprofile': 'my profile',
+    '/explorer': 'explorer',
+    '/json': 'my json',
+    '/team': 'my team',
   };
-
-  routes = [
-    ['/dashboard', 'Dashboard'],
-  ];
 
   constructor(public router: Router, public loadingService: LoadingService, public authService: BackendService) {}
 }

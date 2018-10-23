@@ -31,10 +31,7 @@ export class LoginComponent implements OnInit {
   login() {
     this.loadingService.start('Logging in...');
     this.authService.login(this.username.value, this.password.value, (error, r) => {
-      if (error) {
-        console.log(error);
-        this.authService.openSnackBar(error.error.message, 3000);
-      } else {
+      if (!error) {
         this.router.navigateByUrl('/dashboard');
       }
       this.loadingService.stop();

@@ -1,0 +1,34 @@
+<div class="container">
+
+  <h2 mat-dialog-title class="text-center">Update JSON</h2>
+  <p>All teams and users that have access will be able to see these changes.</p>
+
+  <div mat-dialog-content style="max-height: 400px;">
+    <div class="row">
+      <div class="col">
+
+        <form [formGroup]="updateJsonForm" fxFlex fxLayout="column" fxLayoutAlign="center stretch" class="pt-2">
+          <mat-form-field>
+            <input matInput placeholder="JSON Title" formControlName="title">
+            <mat-error *ngIf="updateJsonForm.controls['title'].hasError('required')">
+              JSON Title is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+  <mat-dialog-actions>
+    <div class="row m-0 w-100">
+      <div class="col-6 pl-0">
+        <button class="mat-raised-button w-100" (click)="cancel()">Cancel</button>
+      </div>
+      <div class="col-6 pr-0">
+        <button class="mat-raised-button mat-primary w-100" (click)="update()" [disabled]="updateJsonForm.invalid">Update</button>
+      </div>
+    </div>
+  </mat-dialog-actions>
+
+</div>

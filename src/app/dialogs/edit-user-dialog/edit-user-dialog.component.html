@@ -1,0 +1,50 @@
+<div class="container">
+
+  <h2 mat-dialog-title class="text-center">Update Profile</h2>
+  <div mat-dialog-content style="max-height: 400px;">
+    <div class="row">
+      <div class="col">
+
+        <form [formGroup]="editUserForm" fxFlex fxLayout="column" fxLayoutAlign="center stretch" class="pt-2">
+          <mat-form-field>
+            <input matInput placeholder="First name" formControlName="name">
+            <mat-error *ngIf="editUserForm.controls['name'].hasError('required')">
+              First name is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput placeholder="Last name" formControlName="surname">
+            <mat-error *ngIf="editUserForm.controls['surname'].hasError('required')">
+              Last name is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput placeholder="Email" formControlName="email">
+            <mat-error *ngIf="editUserForm.controls['email'].hasError('required')">
+              Email is <strong>required</strong>
+            </mat-error>
+            <mat-error *ngIf="editUserForm.controls['email'].hasError('email')">
+              Email is <strong>invalid</strong>
+            </mat-error>
+          </mat-form-field>
+
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+  <mat-dialog-actions>
+    <div class="row m-0 w-100">
+      <div class="col-6 pl-0">
+        <button class="mat-raised-button w-100" (click)="cancel()">Cancel</button>
+      </div>
+      <div class="col-6 pr-0">
+        <button class="mat-raised-button mat-primary w-100" (click)="update()" [disabled]="editUserForm.invalid">Confirm</button>
+      </div>
+    </div>
+  </mat-dialog-actions>
+
+</div>

@@ -34,3 +34,12 @@
 .center {
   height: 90vh;
 }
+
+.no-wrap {
+  white-space: nowrap;
+}
+
+
+.mat-drawer-content {
+  overflow: hidden !important;
+}
