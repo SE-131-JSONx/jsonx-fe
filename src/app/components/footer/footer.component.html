@@ -2,7 +2,7 @@
   <div class="container p-5">
     <div class="row">
 
-      <div class="col">
+      <div class="col" *ngIf="authService.isAuthenticated">
         <div class="row text-center">
 
           <div class="col-12">
@@ -10,31 +10,31 @@
           </div>
 
           <div class="col-12">
-            <button class="text-white text-left w-25" mat-button [routerLink]="['/dashboard']">
+            <button class="text-white w-25" mat-button [routerLink]="['/dashboard']">
               <span>Dashboard</span>
             </button>
           </div>
 
           <div class="col-12">
-            <button class="text-white text-left w-25" mat-button [routerLink]="['/explorer']">
+            <button class="text-white w-25" mat-button [routerLink]="['/explorer']">
               <span>Explorer</span>
             </button>
           </div>
 
           <div class="col-12">
-            <button class="text-white text-left w-25" mat-button [routerLink]="['/json']">
+            <button class="text-white w-25" mat-button [routerLink]="['/json']">
               <span>My JSONs</span>
             </button>
           </div>
 
           <div class="col-12">
-            <button class="text-white text-left w-25" mat-button [routerLink]="['/team']">
+            <button class="text-white w-25" mat-button [routerLink]="['/team']">
               <span>My Teams</span>
             </button>
           </div>
 
           <div class="col-12">
-            <button class="text-white text-left w-25" mat-button [routerLink]="['/myprofile']">
+            <button class="text-white w-25" mat-button [routerLink]="['/myprofile']">
               <span>My Profile</span>
             </button>
           </div>
@@ -50,20 +50,20 @@
           </div>
 
           <div class="col-12">
-            <button class="text-white text-left" mat-button (click)="openGithub()">
+            <button class="text-white" mat-button (click)="openGithub()">
               <span>Github</span>
             </button>
           </div>
 
           <div class="col-12">
-            <button class="text-white text-left" mat-button
+            <button class="text-white" mat-button
                     matTooltip="Coming soon!">
               <span>About Us</span>
             </button>
           </div>
 
           <div class="col-12">
-            <button class="text-white text-left" mat-button
+            <button class="text-white" mat-button
                     matTooltip="Coming soon!">
               <span>Careers</span>
             </button>
