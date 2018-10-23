@@ -1,0 +1,32 @@
+footer{
+  background-color: blue;
+}
+
+.row{
+  margin-left: 28%;
+}
+.span-1-of-4{
+  margin-top: 3%;
+  width: 15%;
+  float: left;
+  text-align: center;
+}
+
+ul{
+  display: inline-block;
+  color: white;
+  list-style-type: none;
+}
+ul li{
+  margin-top: 3%;
+}
+ul li a{
+  color: white;
+}
+
+.license{
+  margin-top: 2%;
+  text-align: center;
+  color: white;
+  padding-bottom: 3%;
+}
