@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {BackendService} from '../../services/backend.service';
+import {globals} from '../../util/globals';
 
 @Component({
   selector: 'app-footer',
@@ -12,7 +13,7 @@ export class FooterComponent {
 
   // noinspection JSMethodCanBeStatic
   openGithub() {
-    window.open('https://github.com/SE-131-JSONx', '_blank');
+    window.open(globals.GITHUB_URL, '_blank');
   }
 }
 

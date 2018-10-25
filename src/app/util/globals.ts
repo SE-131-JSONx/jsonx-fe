@@ -21,6 +21,8 @@ export const globals = {
   JSON: '/json',
   TEAM: '/team',
 
+  GITHUB_URL: 'https://github.com/SE-131-JSONx',
+
 
   get HEADERS() {
     return {
