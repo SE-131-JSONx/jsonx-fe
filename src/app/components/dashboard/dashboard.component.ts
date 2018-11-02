@@ -21,15 +21,13 @@ export class DashboardComponent implements OnInit {
 
     this.backendService.getUserDetails(user_id, (error, r) => {
       this.profile = <Profile> r;
-
     });
   }
 
   ngOnInit() {
     this.backendService.searchTeam(null, (e, r) => {
-      console.log(r);
       r.forEach((team) => {
-        if (team.access_level === 1) {
+        if (team.access_level === 0) {
           this.owned += 1;
         }
         this.member += 1;

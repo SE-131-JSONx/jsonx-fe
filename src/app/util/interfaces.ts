@@ -9,7 +9,6 @@ export interface Profile {
   owned_json_count: number;
   shared_json_count: number;
   team_count: number;
-
 }
 
 export function ProfileInit() {
