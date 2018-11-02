@@ -11,6 +11,8 @@ import {globals} from '../../util/globals';
 })
 export class DashboardComponent implements OnInit {
   profile: Profile = ProfileInit();
+  owned = 0;
+  member = 0;
 
   constructor(private backendService: BackendService) {
     const helper = new JwtHelperService();
@@ -19,9 +21,19 @@ export class DashboardComponent implements OnInit {
 
     this.backendService.getUserDetails(user_id, (error, r) => {
       this.profile = <Profile> r;
+
     });
   }
 
   ngOnInit() {
+    this.backendService.searchTeam(null, (e, r) => {
+      console.log(r);
+      r.forEach((team) => {
+        if (team.access_level === 1) {
+          this.owned += 1;
+        }
+        this.member += 1;
+      });
+    });
   }
 }

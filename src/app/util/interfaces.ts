@@ -6,7 +6,10 @@ export interface Profile {
   created: string;
   updated: string;
   json_count: number;
+  owned_json_count: number;
+  shared_json_count: number;
   team_count: number;
+
 }
 
 export function ProfileInit() {
@@ -18,6 +21,8 @@ export function ProfileInit() {
     created: '',
     updated: '',
     json_count: 0,
+    owned_json_count: 0,
+    shared_json_count: 0,
     team_count: 0,
   };
 }
