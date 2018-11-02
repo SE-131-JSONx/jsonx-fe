@@ -1,23 +1,29 @@
-<div fxLayoutAlign="center" style="padding-top: 4rem">
+<div fxLayoutAlign="center center" style="padding-top: 4rem">
   <h6 class="display-4">Welcome to JSONx!</h6>
 </div>
-<div class="container" fxLayout="row" fxLayoutAlign="center center" style="padding: 2rem">
-  <div class="row align-items-center">
+<div class="container" fxLayout="row" style="margin-top: 1%; margin-bottom: 3%">
+  <div class="row">
     <div class="col">
-      <mat-card class="bg-transparent h-100 p-0" style="width: 18rem">
+      <mat-card class="bg-transparent h-100 p-0" style="width: 140%; margin-left: 20%">
           <mat-toolbar class="mat-accent text-white">Your JSONs</mat-toolbar>
-        <mat-card-content class="p-4" style="text-align: center">
+        <mat-card-content class="p-4" style="text-align: center; white-space: nowrap">
           <div class="row align-items-center">
             <div class="col">
-              <h6>Total JSONs</h6>
+              <h6>Owned JSONs</h6>
               </div>
             <div class="col">
               <h6>Shared JSONs</h6>
             </div>
+            <div class="col">
+              <h6>Accessible JSONs</h6>
+            </div>
           </div>
           <div class="row align-items-center">
             <div class="col">
-              23
+              {{profile.json_count}}
+            </div>
+            <div class="col">
+              5
             </div>
             <div class="col">
               5
@@ -27,9 +33,9 @@
       </mat-card>
     </div>
     <div class="col">
-      <mat-card class="bg-transparent h-100 p-0" style="width: 18rem">
+      <mat-card class="bg-transparent h-100 p-0" style="width: 140%; margin-left: 70%">
         <mat-toolbar class="mat-accent text-white">Your Teams</mat-toolbar>
-        <mat-card-content class="p-4" style="text-align: center">
+        <mat-card-content class="p-4" style="text-align: center; white-space: nowrap">
           <div class="row align-items-center">
             <div class="col">
               <h6>Owned</h6>
@@ -40,10 +46,10 @@
           </div>
           <div class="row align-items-center">
             <div class="col">
-              1
+              {{owned}}
             </div>
             <div class="col">
-              3
+              {{member}}
             </div>
           </div>
         </mat-card-content>
