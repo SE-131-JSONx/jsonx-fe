@@ -2,10 +2,10 @@
 [![Build Status](https://travis-ci.org/SE-131-JSONx/jsonx-fe.svg?branch=cit)](https://travis-ci.org/SE-131-JSONx/jsonx-fe)
 
 Group 3
-Ben Bierman
-Salvatore Nicosia
-Kyuhak Yuk
-Ben Krig
+Ben Bierman,
+Salvatore Nicosia,
+Kyuhak Yuk,
+Ben Krig,
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.7.
 
