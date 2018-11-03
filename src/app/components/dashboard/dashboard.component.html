@@ -5,7 +5,7 @@
   <div class="row">
     <div class="col">
       <mat-card class="bg-transparent h-100 p-0" style="width: 140%; margin-left: 20%">
-          <mat-toolbar class="mat-accent text-white">Your JSONs</mat-toolbar>
+          <mat-toolbar class="mat-accent text-white"><a [routerLink]="['/json']" class="to-my-json">Your JSONs</a></mat-toolbar>
         <mat-card-content class="p-4" style="text-align: center; white-space: nowrap">
           <div class="row align-items-center">
             <div class="col">
@@ -34,7 +34,7 @@
     </div>
     <div class="col">
       <mat-card class="bg-transparent h-100 p-0" style="width: 140%; margin-left: 70%">
-        <mat-toolbar class="mat-accent text-white">Your Teams</mat-toolbar>
+        <mat-toolbar class="mat-accent text-white"><a class="to-your-team" [routerLink]="['/team']">Your Teams</a></mat-toolbar>
         <mat-card-content class="p-4" style="text-align: center; white-space: nowrap">
           <div class="row align-items-center">
             <div class="col">
