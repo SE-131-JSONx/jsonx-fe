@@ -69,6 +69,7 @@ import { DeleteTeamDialogComponent } from './dialogs/delete-team-dialog/delete-t
 import { ShareJsonDialogComponent } from './dialogs/share-json-dialog/share-json-dialog.component';
 import { UnshareJsonDialogComponent } from './dialogs/unshare-json-dialog/unshare-json-dialog.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { SummaryPipe } from './pipes/summary.pipe';
 
 @NgModule({
   declarations: [
@@ -84,6 +85,7 @@ import { FooterComponent } from './components/footer/footer.component';
     MyTeamsComponent,
     TruncatePipe,
     AccessLevelPipe,
+    SummaryPipe,
     DeleteJsonDialogComponent,
     SaveJsonDialogComponent,
     UpdateJsonDialogComponent,
