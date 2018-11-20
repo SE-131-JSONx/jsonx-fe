@@ -1,0 +1,74 @@
+<footer>
+  <div class="container p-5">
+    <div class="row">
+
+      <div class="col" *ngIf="authService.isAuthenticated">
+        <div class="row text-center">
+          <div class="col-12">
+            <h5 class="text-white">Resources</h5>
+          </div>
+          <div class="col-12">
+            <button class="text-white w-25" mat-button [routerLink]="['/dashboard']">
+              <span>Dashboard</span>
+            </button>
+          </div>
+          <div class="col-12">
+            <button class="text-white w-25" mat-button [routerLink]="['/explorer']">
+              <span>Explorer</span>
+            </button>
+          </div>
+          <div class="col-12">
+            <button class="text-white w-25" mat-button [routerLink]="['/json']">
+              <span>My JSONs</span>
+            </button>
+          </div>
+          <div class="col-12">
+            <button class="text-white w-25" mat-button [routerLink]="['/team']">
+              <span>My Teams</span>
+            </button>
+          </div>
+
+          <div class="col-12">
+            <button class="text-white w-25" mat-button [routerLink]="['/myprofile']">
+              <span>My Profile</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="row text-center">
+          <div class="col-12">
+            <h5 class="text-white">About</h5>
+          </div>
+          <div class="col-12">
+            <button class="text-white" mat-button (click)="openGithub()">
+              <span>Github</span>
+            </button>
+          </div>
+          <div class="col-12">
+            <button class="text-white" mat-button
+                    matTooltip="Coming soon!">
+              <span>About Us</span>
+            </button>
+          </div>
+          <div class="col-12">
+            <button class="text-white" mat-button
+                    matTooltip="Coming soon!">
+              <span>Careers</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="container pt-5 text-center">
+      <p class="text-white">
+        JSONx gives developers the tools they need to quickly test and view JSON.
+      </p>
+      <p class="text-white">
+        Version 0.1
+      </p>
+    </div>
+  </div>
+</footer>

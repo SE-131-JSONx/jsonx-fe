@@ -55,12 +55,12 @@ import 'core-js/es7/reflect';
 
 /**
  * By default, zone.js will patch all possible macroTask and DomEvents
- * user can disable parts of macroTask/DomEvents patch by setting following flags
+ * user can disableSave parts of macroTask/DomEvents patch by setting following flags
  */
 
- // (window as any).__Zone_disable_requestAnimationFrame = true; // disable patch requestAnimationFrame
- // (window as any).__Zone_disable_on_property = true; // disable patch onProperty such as onclick
- // (window as any).__zone_symbol__BLACK_LISTED_EVENTS = ['scroll', 'mousemove']; // disable patch specified eventNames
+ // (window as any).__Zone_disable_requestAnimationFrame = true; // disableSave patch requestAnimationFrame
+ // (window as any).__Zone_disable_on_property = true; // disableSave patch onProperty such as onclick
+ // (window as any).__zone_symbol__BLACK_LISTED_EVENTS = ['scroll', 'mousemove']; // disableSave patch specified eventNames
 
  /*
  * in IE/Edge developer tools, the addEventListener will also be wrapped by zone.js
@@ -78,3 +78,35 @@ import 'zone.js/dist/zone';  // Included with Angular CLI.
 /***************************************************************************************************
  * APPLICATION IMPORTS
  */
+import 'hammerjs';
+
+
+Promise.all = function (values: any): Promise<any> {
+  let resolve: (v: any) => void;
+  let reject: (v: any) => void;
+  let promise = new this((res, rej) => {
+    resolve = res;
+    reject = rej;
+  });
+  let count = 0;
+  let index = 0;
+  const resolvedValues: any[] = [];
+  for (let value of values) {
+    if (!(value && value.then)) {
+      value = this.resolve(value);
+    }
+    value.then(
+      ((index) => (value: any) => {
+        resolvedValues[index] = value;
+        count--;
+        if (!count) {
+          resolve(resolvedValues);
+        }
+      })(index),
+      reject);
+    count++;
+    index++;
+  }
+  if (!count) resolve(resolvedValues);
+  return promise;
+}

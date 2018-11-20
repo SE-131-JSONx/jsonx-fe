@@ -18,6 +18,11 @@ export const globals = {
   // ENDPOINTS
   LOGIN: '/login',
   USER: '/user',
+  JSON: '/json',
+  TEAM: '/team',
+
+  GITHUB_URL: 'https://github.com/SE-131-JSONx',
+
 
   get HEADERS() {
     return {
@@ -25,11 +30,9 @@ export const globals = {
     };
   },
   get AUTH_HEADERS() {
-    return {
-      headers: new HttpHeaders({'Content-Type': 'application/json',
+    return new HttpHeaders({'Content-Type': 'application/json',
         'Cache-Control': 'no-cache',
         'Authorization': localStorage.getItem(this.STORAGE_KEY),
-        'Access-Control-Allow-Origin': '*'})
-    };
+        'Access-Control-Allow-Origin': '*'});
   },
 };

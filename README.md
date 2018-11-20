@@ -2,12 +2,26 @@
 [![Build Status](https://travis-ci.org/SE-131-JSONx/jsonx-fe.svg?branch=cit)](https://travis-ci.org/SE-131-JSONx/jsonx-fe)
 
 Group 3
-Ben Bierman
-Salvatore Nicosia
-Kyuhak Yuk
-Ben Krig
+Ben Bierman,
+Salvatore Nicosia,
+Kyuhak Yuk,
+Ben Krig,
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.7.
+
+## Prerequisites
+Before you begin, make sure your development environment includes Node.js® and an npm package manager.
+
+Node.js
+Angular requires Node.js version 8.x or 10.x.
+
+To check your version, run node -v in a terminal/console window.
+
+To get Node.js, go to nodejs.org.
+
+Run `npm install -g @angular/cli` to install the Angular CLI.
+
+Run `npm install` to install all dependencies.
 
 ## Development server
 

@@ -20,6 +20,12 @@
         <button mat-button [routerLink]="['/explorer']" *ngIf="authService.isAuthenticated">
           <span>Explorer</span>
         </button>
+        <button mat-button [routerLink]="['/json']" *ngIf="authService.isAuthenticated">
+          <span>My JSONs</span>
+        </button>
+        <button mat-button [routerLink]="['/team']" *ngIf="authService.isAuthenticated">
+          <span>My Teams</span>
+        </button>
         <button mat-button [routerLink]="['/myprofile']" *ngIf="authService.isAuthenticated">
           <span>My Profile</span>
         </button>
@@ -33,7 +39,7 @@
       </div>
     </mat-toolbar-row>
   </mat-toolbar>
-  <mat-sidenav-container class="bg-transparent">
+  <mat-sidenav-container class="bg-transparent mh-90">
     <mat-sidenav #sidenav>
       <mat-nav-list>
         <button mat-button class="w-100" [routerLink]="['/dashboard']" *ngIf="authService.isAuthenticated" (click)="sidenav.toggle()">
@@ -41,6 +47,12 @@
         </button>
         <button mat-button class="w-100" [routerLink]="['/explorer']" *ngIf="authService.isAuthenticated" (click)="sidenav.toggle()">
           <span>Explorer</span>
+        </button>
+        <button mat-button class="w-100" [routerLink]="['/json']" *ngIf="authService.isAuthenticated" (click)="sidenav.toggle()">
+          <span>My JSONs</span>
+        </button>
+        <button mat-button class="w-100" [routerLink]="['/team']" *ngIf="authService.isAuthenticated" (click)="sidenav.toggle()">
+          <span>My Teams</span>
         </button>
         <button mat-button class="w-100" [routerLink]="['/myprofile']" *ngIf="authService.isAuthenticated" (click)="sidenav.toggle()">
           <span>My Profile</span>
@@ -58,6 +70,7 @@
       <router-outlet></router-outlet>
     </mat-sidenav-content>
   </mat-sidenav-container>
+  <app-footer></app-footer>
 
 </div>
 
