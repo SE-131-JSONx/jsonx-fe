@@ -22,7 +22,13 @@ export class DashboardComponent implements OnInit {
     'Test if collapse and expend works. Team 4. Ben K, Ben B, Salvo, and Kyu. Thank you guys!. I have learned many from you guys! Thank you very much!'
   ];
   date = 'November, 2 2018';
-  maxLength = 80; //only this need to be changed.
+  maxLength = 80;
+
+  newslists1 = [
+    'Our most recent update sees user-flow changes coming to JSONx. Visitors to the site will now be able to access our JSON explorer without registering.',
+    'We hope that this allows for a more effective and efficient user experience for our site. Here at JSONx we are focused on providing the best, most effective form of access for all of your JSON development needs.'
+  ];
+  date1 = 'December, 4 2018';
 
   constructor(private backendService: BackendService) {
     const helper = new JwtHelperService();

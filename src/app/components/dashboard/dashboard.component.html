@@ -59,6 +59,21 @@
 </div>
 <mat-card class="bg-transparent h-100 px-4">
   <mat-card-header>
+    <mat-card-title><h6 class="color-theme-main mat-display-1" style="margin: 0">Explorer Access for All</h6></mat-card-title>
+    <mat-card-subtitle><h5>{{date1}}</h5></mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <ul>
+      <p *ngIf="isActive"><li *ngFor = "let news of newslists1">{{news | summary: maxLength}}<button *ngIf="news.length>maxLength" (click)="onClick()" class = "summaryBtn">. . . click to expend</button></li>
+      </p>
+      <p *ngIf="!isActive">
+      <li *ngFor = "let news of newslists1">{{news}}<button *ngIf="news.length>maxLength" (click)="onClick()" class = "summaryBtn"> click to collapse</button></li>
+      </p>
+    </ul>
+  </mat-card-content>
+</mat-card>
+<mat-card class="bg-transparent h-100 px-4">
+  <mat-card-header>
     <mat-card-title><h6 class="color-theme-main mat-display-1" style="margin: 0">JSONx News</h6></mat-card-title>
     <mat-card-subtitle><h5>{{date}}</h5></mat-card-subtitle>
   </mat-card-header>
@@ -69,8 +84,8 @@
         <p *ngIf="!isActive">
             <li *ngFor = "let news of newslists">{{news}}<button *ngIf="news.length>maxLength" (click)="onClick()" class = "summaryBtn"> click to collapse</button></li>
         </p>
-
       </ul>
   </mat-card-content>
+</mat-card>
 
 
