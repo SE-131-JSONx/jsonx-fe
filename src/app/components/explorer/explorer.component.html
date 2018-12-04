@@ -6,14 +6,15 @@
         <button mat-raised-button class="mx-2" color="primary" (click)="clearJson()">
           <mat-icon>refresh</mat-icon>Clear
         </button>
-        <button mat-raised-button class="mx-2" color="primary" (click)="openSaveJsonDialog()" [disabled]="disableSave">
+        <button mat-raised-button class="mx-2" color="primary" (click)="openSaveJsonDialog()" [disabled]="disableSave" *ngIf="authService.isAuthenticated">
           <mat-icon>add</mat-icon>Save
         </button>
-        <button mat-raised-button class="mx-2" color="primary" (click)="openUpdateJsonDialog()" [disabled]="disableUpdate">
+        <button mat-raised-button class="mx-2" color="primary" (click)="openUpdateJsonDialog()" [disabled]="disableUpdate" *ngIf="authService.isAuthenticated">
           <mat-icon>update</mat-icon>Update
         </button>
         <span class="fill-remaining-space"></span>
-        <h2>{{ dataService.hasData ? dataService.json.title : (defaultJson ? "Demo JSON": "") }}</h2>
+        <h2 *ngIf="authService.isAuthenticated">{{ dataService.hasData ? dataService.json.title : (defaultJson ? "Demo JSON": "") }}</h2>
+        <h2 *ngIf="!authService.isAuthenticated">Login to save your JSON</h2>
       </mat-toolbar>
     </mat-card>
   </div>

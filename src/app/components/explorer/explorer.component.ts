@@ -4,6 +4,7 @@ import { SaveJsonDialogComponent } from '../../dialogs/save-json-dialog/save-jso
 import { UpdateJsonDialogComponent } from '../../dialogs/update-json-dialog/update-json-dialog.component';
 import { MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
+import {BackendService} from '../../services/backend.service';
 
 @Component({
   selector: 'app-explorer',
@@ -30,7 +31,8 @@ export class ExplorerComponent implements OnInit {
 
   constructor(public dataService: DataService,
               private dialog: MatDialog,
-              public router: Router
+              public router: Router,
+              public authService: BackendService
   ) { }
 
   ngOnInit() {

@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: 'myprofile', component: MyprofileComponent, canActivate: [CanActivateViaAuthGuard]},
   { path: 'team', component: MyTeamsComponent, canActivate: [CanActivateViaAuthGuard]},
   { path: 'json', component: MyJsonComponent, canActivate: [CanActivateViaAuthGuard]},
-  { path: 'explorer', component: ExplorerComponent, canActivate: [CanActivateViaAuthGuard]},
+  { path: 'explorer', component: ExplorerComponent},
   { path: 'login', component: LoginComponent},
   { path: 'signup', component: SignupComponent},
   { path: '**', redirectTo: '/dashboard' }
